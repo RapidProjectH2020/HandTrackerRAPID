@@ -108,6 +108,8 @@ class HandTrackerJNI
             }
         }
     }
+
+    public static native void initLog(String [] args);
     public static native double [] getDefaultInitPos();
 
     private static native void showRGB(String name, int width, byte [] data) throws Exception;
