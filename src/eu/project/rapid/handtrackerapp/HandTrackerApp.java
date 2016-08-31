@@ -12,27 +12,27 @@ class HandTrackerApp
 
 		boolean tracking = false;
 		boolean stop = false;
-		double[] x = tracker.getDefaultInitPosRAPID();
+		double[] x = tracker.getDefaultInitPos();
 
 		while (!stop)
 		{
-			tracker.step1_grabRAPID();
-			tracker.step2_setupVirtualCameraFromInputRAPID();
+			tracker.step1_grab();
+			tracker.step2_setupVirtualCameraFromInput();
 
 			if (tracking)
 			{
-				tracker.step3_computeBoundingBoxRAPID(x, 0.1f);
-				tracker.step4_zoomVirtualCameraRAPID();
-				tracker.step5_preprocessInputRAPID();
-				tracker.step6_uploadObservationsRAPID();
-				x = tracker.step7_trackRAPID(x);
+				tracker.step3_computeBoundingBox(x, 0.1f);
+				tracker.step4_zoomVirtualCamera();
+				tracker.step5_preprocessInput();
+				tracker.step6_uploadObservations();
+				x = tracker.step7_track(x);
 			}
 
-			int key = tracker.step8_visualizeRAPID(x);
+			int key = tracker.step8_visualize(x);
 
 			if (key == 's')
 			{
-				if (tracking) x = tracker.getDefaultInitPosRAPID();
+				if (tracking) x = tracker.getDefaultInitPos();
 				tracking = !tracking;
 			}
 
