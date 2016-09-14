@@ -17,6 +17,12 @@ public class HandTracker extends Remoteable
 		this.dfe = dfe;
 		this.tracker = new HandTrackerJNI();
 	}
+	
+	public HandTracker(DFE dfe, String oniFile, int startFrame) throws Exception
+	{
+		this.dfe = dfe;
+		this.tracker = new HandTrackerJNI(oniFile, startFrame);
+	}
 
 	public void step1_grab()
 	{

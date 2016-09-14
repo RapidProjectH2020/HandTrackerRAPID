@@ -7,8 +7,13 @@ class HandTrackerApp
 {
 	public static void main(String[] args) throws Exception
 	{
-		DFE dfe = new DFE();
-		HandTracker tracker = new HandTracker(dfe);
+		DFE dfe = DFE.getInstance();
+		HandTracker tracker = null;
+		
+		if (args.length > 1)
+			tracker = new HandTracker(dfe, args[0], Integer.parseInt(args[1]));
+		else
+			tracker = new HandTracker(dfe);
 
 		boolean tracking = false;
 		boolean stop = false;
