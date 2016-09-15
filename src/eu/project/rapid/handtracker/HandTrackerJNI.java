@@ -1,10 +1,23 @@
 package eu.project.rapid.handtracker;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 class HandTrackerJNI
+	implements java.io.Serializable
 {
-    static
+	private static final long serialVersionUID = -7229075871291249851L;
+
+	static
     {
-        System.loadLibrary("HandTrackerJNI");
+		try
+		{
+			System.loadLibrary("HandTrackerJNI");
+		}
+		catch(Exception e)
+		{
+			
+		}
     }
 
     public HandTrackerJNI() throws Exception
@@ -143,4 +156,14 @@ class HandTrackerJNI
     short [] lastProcessedDepths;
     int bbx, bby, bbwidth, bbheight;
     byte [] lastVisualization;
+    
+	private void readObject(ObjectInputStream is) throws ClassNotFoundException, IOException
+	{
+		is.defaultReadObject();
+	}
+
+	private void writeObject(ObjectOutputStream os) throws IOException
+	{
+		os.defaultWriteObject();
+	}
 }

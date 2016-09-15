@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class HandTracker extends Remoteable
 {
-	private transient HandTrackerJNI	tracker;
+	private HandTrackerJNI	tracker;
 	private transient DFE				dfe;
 	private final static Logger log = LogManager.getLogger(HandTracker.class.getSimpleName());
 
