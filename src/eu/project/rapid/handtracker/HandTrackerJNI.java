@@ -14,7 +14,7 @@ class HandTrackerJNI
 		{
 			System.loadLibrary("HandTrackerJNI");
 		}
-		catch(Exception e)
+		catch(UnsatisfiedLinkError e)
 		{
 			
 		}
