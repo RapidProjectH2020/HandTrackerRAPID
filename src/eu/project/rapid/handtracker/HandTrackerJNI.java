@@ -172,7 +172,8 @@ class HandTrackerJNI
     
 	private void readObject(ObjectInputStream is) throws Exception
 	{
-		createHandTracker(hasGrabber);
+		if (handTracker == 0)
+			createHandTracker(hasGrabber);
 		System.out.println("Deserialization started");
 		is.defaultReadObject();
 		System.out.println("Deserialization ended");

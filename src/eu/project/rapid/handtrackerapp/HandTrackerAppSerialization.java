@@ -28,9 +28,10 @@ class HandTrackerAppSerialization
 		tr.step1_grabRAPID();
 		tr = switchHT(tr);
 
-		while (true)
+		boolean stop = false; 
+		while (!stop)
 		{
-			tr.step8_visualizeRAPID(tr.getDefaultInitPosRAPID());
+			stop = tr.step8_visualizeRAPID(tr.getDefaultInitPosRAPID()) == 'q';
 		}
 	}
 }

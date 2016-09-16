@@ -71,7 +71,7 @@
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>eu.project.rapid.handtrackerapp.HandTrackerAppSerialization</mainClass>
+									<mainClass>eu.project.rapid.handtrackerapp.HandTrackerApp</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>

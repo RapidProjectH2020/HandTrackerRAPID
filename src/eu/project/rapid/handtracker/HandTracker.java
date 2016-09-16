@@ -31,9 +31,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step1_grabRAPID", parameterTypes);
-			dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,9 +61,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step2_setupVirtualCameraFromInputRAPID", parameterTypes);
-			dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,9 +92,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step3_computeBoundingBoxRAPID", parameterTypes);
-			dfe.execute(method, paramValues, this);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -119,9 +122,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step4_zoomVirtualCameraRAPID", parameterTypes);
-			dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,9 +152,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step5_preprocessInputRAPID", parameterTypes);
-			dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -177,9 +182,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step6_uploadObservationsRAPID", parameterTypes);
-			dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -207,9 +213,11 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step7_trackRAPID", parameterTypes);
-			return (double[]) dfe.execute(method, paramValues, this);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception)result;
+			else return (double[])result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -239,9 +247,11 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("step8_visualizeRAPID", parameterTypes);
-			return (int) dfe.execute(method, paramValues, this);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception)result;
+			else return (int)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -270,9 +280,11 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("getDefaultInitPosRAPID", parameterTypes);
-			return (double[]) dfe.execute(method, this);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception)result;
+			else return (double[])result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -294,9 +306,10 @@ public class HandTracker extends Remoteable
 		try
 		{
 			method = this.getClass().getMethod("initLogRAPID", parameterTypes);
-			dfe.execute(method, paramValues, this);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception)result;
 		}
-		catch (NoSuchMethodException | SecurityException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
