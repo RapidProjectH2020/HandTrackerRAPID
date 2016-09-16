@@ -12,22 +12,34 @@ class HandTrackerJNI
     {
 		try
 		{
+			System.out.println("HandTrackerJNI : trying to load");
 			System.loadLibrary("HandTrackerJNI");
+			System.out.println("HandTrackerJNI : loaded successfully");
 		}
 		catch(UnsatisfiedLinkError e)
 		{
-			
+			e.printStackTrace();
 		}
     }
+	
+	public HandTrackerJNI() throws Exception
+	{
+		this(false);
+		System.out.println("Default constructor called");
+	}
 
-    public HandTrackerJNI() throws Exception
+    public HandTrackerJNI(boolean withGrab) throws Exception
     {
-        createHandTracker();
+    	System.out.println("1-arg constructor called");
+        createHandTracker(withGrab);
+        hasGrabber = withGrab;
     }
 
     public HandTrackerJNI(String oniFile, int startFrame) throws Exception
     {
+    	System.out.println("2-arg constructor called");
         createHandTracker(oniFile, startFrame);
+        hasGrabber = false;
     }
 
     protected void finalize() throws Exception
@@ -88,7 +100,7 @@ class HandTrackerJNI
             tracking = true;
         }
         else
-            tracker = new HandTrackerJNI();
+            tracker = new HandTrackerJNI(true);
 
         boolean stop = false;
         double [] x = tracker.getDefaultInitPos();
@@ -130,7 +142,7 @@ class HandTrackerJNI
     private static native int waitKey(int wait);
 
 
-    private native void createHandTracker() throws Exception;
+    private native void createHandTracker(boolean withGrabber) throws Exception;
     private native void createHandTracker(String oniFile, int startFrame) throws Exception;
     private native void destroyHandTracker() throws Exception;
 
@@ -143,8 +155,9 @@ class HandTrackerJNI
     private native double [] track(double [] x) throws Exception;
     private native void visualize(double [] x) throws Exception;
 
-    int handTracker;
+    transient long handTracker;
 
+    boolean hasGrabber;
     int width;
     int height;
     byte [] lastRGB;
@@ -157,13 +170,18 @@ class HandTrackerJNI
     int bbx, bby, bbwidth, bbheight;
     byte [] lastVisualization;
     
-	private void readObject(ObjectInputStream is) throws ClassNotFoundException, IOException
+	private void readObject(ObjectInputStream is) throws Exception
 	{
+		createHandTracker(hasGrabber);
+		System.out.println("Deserialization started");
 		is.defaultReadObject();
+		System.out.println("Deserialization ended");
 	}
 
 	private void writeObject(ObjectOutputStream os) throws IOException
 	{
+		System.out.println("Serialization started");
 		os.defaultWriteObject();
+		System.out.println("Serialization ended");
 	}
 }

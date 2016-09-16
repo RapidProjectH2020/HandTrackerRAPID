@@ -12,10 +12,10 @@ public class HandTracker extends Remoteable
 	private transient DFE				dfe;
 	private final static Logger log = LogManager.getLogger(HandTracker.class.getSimpleName());
 
-	public HandTracker(DFE dfe) throws Exception
+	public HandTracker(DFE dfe, boolean withGrab) throws Exception
 	{
 		this.dfe = dfe;
-		this.tracker = new HandTrackerJNI();
+		this.tracker = new HandTrackerJNI(withGrab);
 	}
 	
 	public HandTracker(DFE dfe, String oniFile, int startFrame) throws Exception

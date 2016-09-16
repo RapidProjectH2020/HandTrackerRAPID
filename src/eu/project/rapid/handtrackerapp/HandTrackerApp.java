@@ -13,7 +13,7 @@ class HandTrackerApp
 		if (args.length > 1)
 			tracker = new HandTracker(dfe, args[0], Integer.parseInt(args[1]));
 		else
-			tracker = new HandTracker(dfe);
+			tracker = new HandTracker(dfe, true);
 
 		boolean tracking = false;
 		boolean stop = false;
