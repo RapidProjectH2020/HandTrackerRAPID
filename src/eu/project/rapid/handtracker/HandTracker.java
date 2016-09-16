@@ -3,219 +3,77 @@ package eu.project.rapid.handtracker;
 import java.lang.reflect.Method;
 import eu.project.rapid.ac.DFE;
 import eu.project.rapid.ac.Remoteable;
+import eu.project.rapid.handtracker.HandTrackerJNI.Image;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class HandTracker extends Remoteable
 {
-	private HandTrackerJNI	tracker;
-	private transient DFE				dfe;
-	private final static Logger log = LogManager.getLogger(HandTracker.class.getSimpleName());
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 3845013264516843637L;
+	private HandTrackerJNI		tracker;
+	private transient DFE		dfe;
+	private final static Logger	log					= LogManager.getLogger(HandTracker.class.getSimpleName());
 
 	public HandTracker(DFE dfe, boolean withGrab) throws Exception
 	{
 		this.dfe = dfe;
 		this.tracker = new HandTrackerJNI(withGrab);
 	}
-	
+
 	public HandTracker(DFE dfe, String oniFile, int startFrame) throws Exception
 	{
 		this.dfe = dfe;
 		this.tracker = new HandTrackerJNI(oniFile, startFrame);
 	}
 
-	public void step1_grab()
+	public HandTrackerJNI.Step1Output step1_grabRAPID()
 	{
 		Class<?>[] parameterTypes = {};
 		Method method;
 		try
 		{
-			method = this.getClass().getMethod("step1_grabRAPID", parameterTypes);
+			method = this.getClass().getMethod("step1_grab", parameterTypes);
 			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step1Output) result;
 		}
 		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 	}
 
-	public void step1_grabRAPID()
+	public HandTrackerJNI.Step1Output step1_grab()
 	{
 		try
 		{
 			log.info("Trying to execute step1_grab");
-			tracker.step1_grab();
+			return tracker.native_step1_grab();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			return null;
 		}
 	}
-
-	public void step2_setupVirtualCameraFromInput()
+	
+	public HandTrackerJNI.Step2Output step2_computeBoundingBoxRAPID(HandTrackerJNI.Step2Input input)
 	{
-		Class<?>[] parameterTypes = {};
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
 		Method method;
 		try
 		{
-			method = this.getClass().getMethod("step2_setupVirtualCameraFromInputRAPID", parameterTypes);
-			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void step2_setupVirtualCameraFromInputRAPID()
-	{
-		try
-		{
-			log.info("Trying to execute step2_setupVirtualCameraFromInput");
-			tracker.step2_setupVirtualCameraFromInput();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public void step3_computeBoundingBox(double[] hypothesis, float padding)
-	{
-		Class<?>[] parameterTypes = { double[].class, float.class };
-		Method method;
-		Object[] paramValues = { hypothesis, padding };
-		try
-		{
-			method = this.getClass().getMethod("step3_computeBoundingBoxRAPID", parameterTypes);
+			method = this.getClass().getMethod("step2_computeBoundingBox", parameterTypes);
 			Object result = dfe.execute(method, paramValues, this);
-			if (result instanceof Exception) throw (Exception)result;
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void step3_computeBoundingBoxRAPID(double[] hypothesis, float padding)
-	{
-		try
-		{
-			log.info("Trying to execute step3_computeBoundingBox");
-			this.tracker.step3_computeBoundingBox(hypothesis, padding);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public void step4_zoomVirtualCamera()
-	{
-		Class<?>[] parameterTypes = {};
-		Method method;
-		try
-		{
-			method = this.getClass().getMethod("step4_zoomVirtualCameraRAPID", parameterTypes);
-			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void step4_zoomVirtualCameraRAPID()
-	{
-		try
-		{
-			log.info("Trying to execute step4_zoomVirtualCamera");
-			this.tracker.step4_zoomVirtualCamera();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public void step5_preprocessInput()
-	{
-		Class<?>[] parameterTypes = {};
-		Method method;
-		try
-		{
-			method = this.getClass().getMethod("step5_preprocessInputRAPID", parameterTypes);
-			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void step5_preprocessInputRAPID()
-	{
-		try
-		{
-			log.info("Trying to execute step5_preprocessInput");
-			this.tracker.step5_preprocessInput();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public void step6_uploadObservations()
-	{
-		Class<?>[] parameterTypes = {};
-		Method method;
-		try
-		{
-			method = this.getClass().getMethod("step6_uploadObservationsRAPID", parameterTypes);
-			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public void step6_uploadObservationsRAPID()
-	{
-		try
-		{
-			log.info("Trying to execute step6_uploadObservations");
-			this.tracker.step6_uploadObservations();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public double[] step7_track(double[] x)
-	{
-		Class<?>[] parameterTypes = { double[].class };
-		Method method;
-		Object[] paramValues = { x };
-		try
-		{
-			method = this.getClass().getMethod("step7_trackRAPID", parameterTypes);
-			Object result = dfe.execute(method, paramValues, this);
-			if (result instanceof Exception) throw (Exception)result;
-			else return (double[])result;
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step2Output) result;
 		}
 		catch (Exception e)
 		{
@@ -224,65 +82,148 @@ public class HandTracker extends Remoteable
 			return null;
 		}
 	}
-
-	public double[] step7_trackRAPID(double[] x)
+	
+	public HandTrackerJNI.Step2Output step2_computeBoundingBox(HandTrackerJNI.Step2Input input)
 	{
 		try
 		{
-			log.info("Trying to execute step7_track");
-			return this.tracker.step7_track(x);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public int step8_visualize(double[] x)
-	{
-		Class<?>[] parameterTypes = { double[].class };
-		Method method;
-		Object[] paramValues = { x };
-		try
-		{
-			method = this.getClass().getMethod("step8_visualizeRAPID", parameterTypes);
-			Object result = dfe.execute(method, paramValues, this);
-			if (result instanceof Exception) throw (Exception)result;
-			else return (int)result;
+			return tracker.native_step2_computeBoundingBox(input);
 		}
 		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return -1;
+			return null;
 		}
 	}
-
-	public int step8_visualizeRAPID(double[] x)
+	
+	public HandTrackerJNI.Step3Output step3_zoomVirtualCameraRAPID(HandTrackerJNI.Step3Input input)
 	{
-		try
-		{
-			log.info("Trying to execute step8_visualize");
-			return this.tracker.step8_visualize(x);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			return -1;
-		}
-	}
-
-	public double[] getDefaultInitPos()
-	{
-		Class<?>[] parameterTypes = {};
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
 		Method method;
 		try
 		{
-			method = this.getClass().getMethod("getDefaultInitPosRAPID", parameterTypes);
-			Object result = dfe.execute(method, this);
-			if (result instanceof Exception) throw (Exception)result;
-			else return (double[])result;
+			method = this.getClass().getMethod("step3_zoomVirtualCamera", parameterTypes);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step3Output) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step3Output step3_zoomVirtualCamera(HandTrackerJNI.Step3Input input)
+	{
+		try
+		{
+			return tracker.native_step3_zoomVirtualCamera(input);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step4Output step4_preprocessInputRAPID(HandTrackerJNI.Step4Input input)
+	{
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
+		Method method;
+		try
+		{
+			method = this.getClass().getMethod("step4_preprocessInput", parameterTypes);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step4Output) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step4Output step4_preprocessInput(HandTrackerJNI.Step4Input input)
+	{
+		try
+		{
+			return tracker.native_step4_preprocessInput(input);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step5Output step5_trackRAPID(HandTrackerJNI.Step5Input input)
+	{
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
+		Method method;
+		try
+		{
+			method = this.getClass().getMethod("step5_track", parameterTypes);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step5Output) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step5Output step5_track(HandTrackerJNI.Step5Input input)
+	{
+		try
+		{
+			return tracker.native_step5_track(input);
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step6Output step6_visualizeRAPID(HandTrackerJNI.Step6Input input)
+	{
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
+		Method method;
+		try
+		{
+			method = this.getClass().getMethod("step6_visualize", parameterTypes);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step6Output) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public HandTrackerJNI.Step6Output step6_visualize(HandTrackerJNI.Step6Input input)
+	{
+		try
+		{
+			return tracker.native_step6_visualize(input);
 		}
 		catch (Exception e)
 		{
@@ -294,20 +235,39 @@ public class HandTracker extends Remoteable
 
 	public double[] getDefaultInitPosRAPID()
 	{
-		log.info("Trying to execute getDefaultInitPos");
-		return this.tracker.getDefaultInitPos();
+		Class<?>[] parameterTypes = {};
+		Method method;
+		try
+		{
+			method = this.getClass().getMethod("getDefaultInitPos", parameterTypes);
+			Object result = dfe.execute(method, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (double[]) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	public void initLog(String[] args)
+	public double[] getDefaultInitPos()
+	{
+		log.info("Trying to execute getDefaultInitPos");
+		return HandTrackerJNI.getDefaultInitPos();
+	}
+
+	public void initLogRAPID(String[] args)
 	{
 		Class<?>[] parameterTypes = { String[].class };
 		Method method;
 		Object[] paramValues = { args };
 		try
 		{
-			method = this.getClass().getMethod("initLogRAPID", parameterTypes);
+			method = this.getClass().getMethod("initLog", parameterTypes);
 			Object result = dfe.execute(method, paramValues, this);
-			if (result instanceof Exception) throw (Exception)result;
+			if (result instanceof Exception) throw (Exception) result;
 		}
 		catch (Exception e)
 		{
@@ -316,10 +276,10 @@ public class HandTracker extends Remoteable
 		}
 	}
 
-	public void initLogRAPID(String[] args)
+	public void initLog(String[] args)
 	{
 		log.info("Trying to execute initLog");
-		tracker.initLog(args);
+		HandTrackerJNI.initLog(args);
 	}
 
 	@Override
@@ -327,6 +287,18 @@ public class HandTracker extends Remoteable
 	{
 		// TODO Auto-generated method stub
 
+	}
+
+	public void showImage(String name, Image viz)
+	{
+		// TODO Auto-generated method stub
+		HandTrackerJNI.showImage(name, viz);
+	}
+
+	public int waitKey(int i)
+	{
+		// TODO Auto-generated method stub
+		return tracker.waitKey(i);
 	}
 
 }

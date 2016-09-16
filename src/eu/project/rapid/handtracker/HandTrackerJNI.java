@@ -5,39 +5,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-class HandTrackerJNI implements java.io.Serializable
+public class HandTrackerJNI implements java.io.Serializable
 {
 	private static final long serialVersionUID = -7229075871291249851L;
 
 	// Basic types
-	static public class ByteImage implements Serializable
+	static public class Image implements Serializable
 	{
 		/**
 		 * 
 		 */
-		private static final long	serialVersionUID	= 2066201065657020072L;
-		int							width, height;
-		byte[]						data;
-	}
-
-	static public class ShortImage implements Serializable
-	{
-		/**
-		 * 
-		 */
-		private static final long	serialVersionUID	= 2484457944228504710L;
-		int							width, height;
-		short[]						data;
-	}
-
-	static public class FloatImage implements Serializable
-	{
-		/**
-		 * 
-		 */
-		private static final long	serialVersionUID	= -4477354002053783731L;
-		int							width, height;
-		float[]						data;
+		private static final long	serialVersionUID	= 1820484566470547231L;
+		public int					width, height, type;
+		public byte[]				data;
 	}
 
 	static public class Matrix4x4 implements Serializable
@@ -46,7 +26,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -7533883944605635103L;
-		float[]						data;
+		public float[]				data;
 	}
 
 	static public class BoundingBox implements Serializable
@@ -55,7 +35,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -1182080569542218513L;
-		int							x, y, width, height;
+		public int					x, y, width, height;
 	}
 
 	// Compound types
@@ -65,9 +45,9 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -7915198404469343079L;
-		ByteImage					rgb;
-		ShortImage					depth;
-		Matrix4x4					view, projection;
+		public Image				rgb;
+		public Image				depth;
+		public Matrix4x4			view, projection;
 	}
 
 	static public class Step2Input implements Serializable
@@ -76,10 +56,11 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -8544494730230459685L;
-		int							width, height;
-		Matrix4x4					view, projection;
-		double[]					x;
-		float						padding;
+		public int					width;
+		public int					height;
+		public Matrix4x4			view, projection;
+		public double[]				x;
+		public float				padding;
 	}
 
 	static public class Step2Output implements Serializable
@@ -88,7 +69,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -1554647958896274332L;
-		BoundingBox					bb;
+		public BoundingBox			bb;
 	}
 
 	static public class Step3Input implements Serializable
@@ -97,9 +78,9 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -5915250091329431074L;
-		int							width, height;
-		BoundingBox					bb;
-		Matrix4x4					projection;
+		public int					width, height;
+		public BoundingBox			bb;
+		public Matrix4x4			projection;
 	}
 
 	static public class Step3Output implements Serializable
@@ -108,7 +89,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -2490868582531574363L;
-		Matrix4x4					zoomProjectionMatrix;
+		public Matrix4x4			zoomProjectionMatrix;
 	}
 
 	static public class Step4Input implements Serializable
@@ -117,9 +98,9 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= 3036005958993968225L;
-		BoundingBox					bb;
-		ByteImage					rgb;
-		ShortImage					depth;
+		public BoundingBox			bb;
+		public Image				rgb;
+		public Image				depth;
 	}
 
 	static public class Step4Output implements Serializable
@@ -128,8 +109,8 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= 1629557625495563033L;
-		ByteImage					labels;
-		ShortImage					depths;
+		public Image				labels;
+		public Image				depths;
 	}
 
 	static public class Step5Input implements Serializable
@@ -138,10 +119,10 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= 5866255157108133246L;
-		double[]					x;
-		Matrix4x4					view, projection;
-		ByteImage					labels;
-		ShortImage					depths;
+		public double[]				x;
+		public Matrix4x4			view, projection;
+		public Image				labels;
+		public Image				depths;
 	}
 
 	static public class Step5Output implements Serializable
@@ -150,7 +131,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -1211806922442748433L;
-		double[]					x;
+		public double[]				x;
 	}
 
 	static public class Step6Input implements Serializable
@@ -159,9 +140,9 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= 39014894702908718L;
-		double[]					x;
-		ByteImage					rgb;
-		Matrix4x4					view, projection;
+		public double[]				x;
+		public Image				rgb;
+		public Matrix4x4			view, projection;
 	}
 
 	static public class Step6Output implements Serializable
@@ -170,7 +151,7 @@ class HandTrackerJNI implements java.io.Serializable
 		 * 
 		 */
 		private static final long	serialVersionUID	= -3435429129025876726L;
-		FloatImage					viz;
+		public Image				viz;
 	}
 
 	static
@@ -239,7 +220,7 @@ class HandTrackerJNI implements java.io.Serializable
 				step2i.height = step1o.rgb.height;
 				step2i.padding = 0.1f;
 				step2i.view = step1o.view;
-				step2i.projection = step2i.projection;
+				step2i.projection = step1o.projection;
 				Step2Output step2o = tracker.native_step2_computeBoundingBox(step2i);
 
 				Step3Input step3i = new Step3Input();
@@ -293,31 +274,27 @@ class HandTrackerJNI implements java.io.Serializable
 
 	public static native double[] getDefaultInitPos();
 
-	public static native void showImage(String name, ByteImage img) throws Exception;
-
-	public static native void showImage(String name, ShortImage img) throws Exception;
-
-	public static native void showImage(String name, FloatImage img) throws Exception;
+	public static native void showImage(String name, Image img);
 
 	public static native int waitKey(int wait);
 
-	public native void createHandTracker(boolean withGrabber) throws Exception;
+	public native void createHandTracker(boolean withGrabber);
 
-	public native void createHandTracker(String oniFile, int startFrame) throws Exception;
+	public native void createHandTracker(String oniFile, int startFrame);
 
-	public native void destroyHandTracker() throws Exception;
+	public native void destroyHandTracker();
 
-	public native Step1Output native_step1_grab() throws Exception;
+	public native Step1Output native_step1_grab();
 
-	public native Step2Output native_step2_computeBoundingBox(Step2Input input) throws Exception;
+	public native Step2Output native_step2_computeBoundingBox(Step2Input input);
 
-	public native Step3Output native_step3_zoomVirtualCamera(Step3Input input) throws Exception;
+	public native Step3Output native_step3_zoomVirtualCamera(Step3Input input);
 
-	public native Step4Output native_step4_preprocessInput(Step4Input input) throws Exception;
+	public native Step4Output native_step4_preprocessInput(Step4Input input);
 
-	public native Step5Output native_step5_track(Step5Input input) throws Exception;
+	public native Step5Output native_step5_track(Step5Input input);
 
-	public native Step6Output native_step6_visualize(Step6Input input) throws Exception;
+	public native Step6Output native_step6_visualize(Step6Input input);
 
 	transient long	handTracker;
 	boolean			hasGrabber;

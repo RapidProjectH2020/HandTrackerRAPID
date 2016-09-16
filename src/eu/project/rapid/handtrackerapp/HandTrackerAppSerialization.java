@@ -10,28 +10,28 @@ import eu.project.rapid.handtracker.HandTracker;
 
 class HandTrackerAppSerialization
 {
-	static HandTracker switchHT(HandTracker ht) throws IOException, ClassNotFoundException
-	{
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		ObjectOutputStream os = new ObjectOutputStream(bos);
-		os.writeObject(ht);
-		
-		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-		ObjectInputStream is = new ObjectInputStream(bis);
-		return (HandTracker)is.readObject();
-	}
-	
-	public static void main(String [] args) throws Exception
-	{
-		HandTracker tr = new HandTracker(null, true);
-
-		tr.step1_grabRAPID();
-		tr = switchHT(tr);
-
-		boolean stop = false; 
-		while (!stop)
-		{
-			stop = tr.step8_visualizeRAPID(tr.getDefaultInitPosRAPID()) == 'q';
-		}
-	}
+//	static HandTracker switchHT(HandTracker ht) throws IOException, ClassNotFoundException
+//	{
+//		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//		ObjectOutputStream os = new ObjectOutputStream(bos);
+//		os.writeObject(ht);
+//		
+//		ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+//		ObjectInputStream is = new ObjectInputStream(bis);
+//		return (HandTracker)is.readObject();
+//	}
+//	
+//	public static void main(String [] args) throws Exception
+//	{
+//		HandTracker tr = new HandTracker(null, true);
+//
+//		tr.step1_grabRAPID();
+//		tr = switchHT(tr);
+//
+//		boolean stop = false; 
+//		while (!stop)
+//		{
+//			stop = tr.step8_visualizeRAPID(tr.getDefaultInitPosRAPID()) == 'q';
+//		}
+//	}
 }
