@@ -8,15 +8,12 @@ class HandTrackerApp
 {
 	public static void main(String[] args) throws Exception
 	{
-		DFE dfe = null; //DFE.getInstance();
-		HandTracker tracker = null;
-
-		if (args.length > 1) tracker = new HandTracker(dfe, args[0], Integer.parseInt(args[1]));
-		else tracker = new HandTracker(dfe, true);
+		DFE dfe = DFE.getInstance();
+		HandTracker tracker = new HandTracker(dfe);
 
 		boolean tracking = false;
 		boolean stop = false;
-		double[] x = tracker.getDefaultInitPos();
+		double[] x = tracker.getDefaultInitPosRAPID();
 
 		while (!stop)
 		{
@@ -31,20 +28,20 @@ class HandTrackerApp
 				step2i.padding = 0.1f;
 				step2i.view = step1o.view;
 				step2i.projection = step1o.projection;
-				HandTrackerJNI.Step2Output step2o = tracker.step2_computeBoundingBox(step2i);
+				HandTrackerJNI.Step2Output step2o = tracker.step2_computeBoundingBoxRAPID(step2i);
 
 				HandTrackerJNI.Step3Input step3i = new HandTrackerJNI.Step3Input();
 				step3i.bb = step2o.bb;
 				step3i.projection = step1o.projection;
 				step3i.width = step1o.rgb.width;
 				step3i.height = step1o.rgb.height;
-				HandTrackerJNI.Step3Output step3o = tracker.step3_zoomVirtualCamera(step3i);
+				HandTrackerJNI.Step3Output step3o = tracker.step3_zoomVirtualCameraRAPID(step3i);
 
 				HandTrackerJNI.Step4Input step4i = new HandTrackerJNI.Step4Input();
 				step4i.bb = step2o.bb;
 				step4i.depth = step1o.depth;
 				step4i.rgb = step1o.rgb;
-				HandTrackerJNI.Step4Output step4o = tracker.step4_preprocessInput(step4i);
+				HandTrackerJNI.Step4Output step4o = tracker.step4_preprocessInputRAPID(step4i);
 
 				HandTrackerJNI.Step5Input step5i = new HandTrackerJNI.Step5Input();
 				step5i.depths = step4o.depths;
@@ -52,7 +49,7 @@ class HandTrackerApp
 				step5i.projection = step3o.zoomProjectionMatrix;
 				step5i.view = step1o.view;
 				step5i.x = x;
-				HandTrackerJNI.Step5Output step5o = tracker.step5_track(step5i);
+				HandTrackerJNI.Step5Output step5o = tracker.step5_trackRAPID(step5i);
 
 				x = step5o.x;
 			}

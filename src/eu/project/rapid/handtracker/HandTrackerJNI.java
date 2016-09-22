@@ -1,8 +1,5 @@
 package eu.project.rapid.handtracker;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class HandTrackerJNI implements java.io.Serializable
@@ -167,44 +164,17 @@ public class HandTrackerJNI implements java.io.Serializable
 			e.printStackTrace();
 		}
 	}
-
-	public HandTrackerJNI() throws Exception
+	
+	public HandTrackerJNI()
 	{
-		this(false);
-		System.out.println("Default constructor called");
-	}
-
-	public HandTrackerJNI(boolean withGrab) throws Exception
-	{
-		System.out.println("1-arg constructor called");
-		createHandTracker(withGrab);
-		hasGrabber = withGrab;
-	}
-
-	public HandTrackerJNI(String oniFile, int startFrame) throws Exception
-	{
-		System.out.println("2-arg constructor called");
-		createHandTracker(oniFile, startFrame);
-		hasGrabber = false;
-	}
-
-	protected void finalize() throws Exception
-	{
-		destroyHandTracker();
+		
 	}
 
 	public static void main(String args[]) throws Exception
 	{
-		HandTrackerJNI tracker = null;
+		HandTrackerJNI tracker = new HandTrackerJNI();
 
 		boolean tracking = false;
-		if (args.length > 1)
-		{
-			tracker = new HandTrackerJNI(args[0], Integer.parseInt(args[1]));
-			tracking = true;
-		}
-		else tracker = new HandTrackerJNI(true);
-
 		boolean stop = false;
 		double[] x = HandTrackerJNI.getDefaultInitPos();
 
@@ -278,12 +248,6 @@ public class HandTrackerJNI implements java.io.Serializable
 
 	public static native int waitKey(int wait);
 
-	public native void createHandTracker(boolean withGrabber);
-
-	public native void createHandTracker(String oniFile, int startFrame);
-
-	public native void destroyHandTracker();
-
 	public native Step1Output native_step1_grab();
 
 	public native Step2Output native_step2_computeBoundingBox(Step2Input input);
@@ -295,22 +259,4 @@ public class HandTrackerJNI implements java.io.Serializable
 	public native Step5Output native_step5_track(Step5Input input);
 
 	public native Step6Output native_step6_visualize(Step6Input input);
-
-	transient long	handTracker;
-	boolean			hasGrabber;
-
-	private void readObject(ObjectInputStream is) throws Exception
-	{
-		if (handTracker == 0) createHandTracker(hasGrabber);
-		System.out.println("Deserialization started");
-		is.defaultReadObject();
-		System.out.println("Deserialization ended");
-	}
-
-	private void writeObject(ObjectOutputStream os) throws IOException
-	{
-		System.out.println("Serialization started");
-		os.defaultWriteObject();
-		System.out.println("Serialization ended");
-	}
 }
