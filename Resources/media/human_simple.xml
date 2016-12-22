@@ -1,0 +1,3842 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="12">
+<comment>
+Notes: 
+optimizable variables order:
+body_center.trans_X         min: 0  max: 0  def: 0  var: 150
+body_center.trans_Y         min: 0  max: 0  def: 0  var: 150
+body_center.trans_Z         min: 0  max: 0  def: 0  var: 150
+body_center.Roll         min: -12  max: 12  def: 0  var: 1
+body_center.Pitch         min: -12  max: 12  def: 0  var: 1
+body_center.Yaw         min: -12  max: 12  def: 0  var: 1
+up_body_joint1.Roll         min: -0.5  max: 0.5  def: 0  var: 1
+up_body_joint1.Pitch         min: -0.2  max: 0.5  def: 0  var: 1
+up_body_joint1.Yaw         min: -1.5  max: 1.5  def: 0  var: 1
+left_collar.Roll         min: -0.1  max: 0.1  def: 0  var: 1
+left_collar.Yaw         min: -0.15  max: 0.1  def: 0  var: 1
+shoulder_left_joint.Roll         min: -2  max: 1.7  def: 0  var: 1
+shoulder_left_joint.Pitch         min: -1.8  max: 1.57  def: 0  var: 1
+shoulder_left_joint.Yaw         min: -1.4  max: 2  def: 0  var: 1
+left_elbow_joint.Yaw         min: -2.5  max: 0  def: 0  var: 1
+right_collar.Roll         min: -0.1  max: 0.1  def: 0  var: 1
+right_collar.Yaw         min: -0.1  max: 0.15  def: 0  var: 1
+shoulder_right_joint.Roll         min: -1.7  max: 2  def: 0  var: 1
+shoulder_right_joint.Pitch         min: -1.8  max: 1.57  def: 0  var: 1
+shoulder_right_joint.Yaw         min: -2  max: 1.4  def: 0  var: 1
+right_elbow_joint.Yaw         min: 0  max: 2.5  def: 0  var: 1
+neck_joint.Roll         min: -0.4  max: 0.4  def: 0  var: 1
+neck_joint.Pitch         min: -0.3  max: 0.3  def: 0  var: 1
+leg_left_joint.Roll         min: -1.57  max: 1.57  def: 0  var: 1
+leg_left_joint.Pitch         min: -1  max: 1.57  def: 0  var: 1
+leg_left_joint.Yaw         min: -1.2  max: 0.5  def: 0  var: 1
+knee_left_joint.Pitch         min: -2.8  max: 0.1  def: 0  var: 2
+ankle_left_joint.Pitch         min: -0.6  max: 0.6  def: 0  var: 1
+ankle_left_joint.Yaw         min: -0.7  max: 0.7  def: 0  var: 1
+right_leg_joint.Roll         min: -1.57  max: 1.57  def: 0  var: 1
+right_leg_joint.Pitch         min: -1  max: 1.57  def: 0  var: 1
+right_leg_joint.Yaw         min: -0.5  max: 1.2  def: 0  var: 1
+knee_right_joint_.Pitch         min: -2.8  max: 0.1  def: 0  var: 2
+ankle_right_joint.Pitch         min: -0.6  max: 0.6  def: 0  var: 1
+ankle_right_joint.Yaw         min: -0.7  max: 0.7  def: 0  var: 1
+Total count: 35
+
+tree arrangement of the optimizable variables:
+
+-link_000
+-body_center       |||     OPT
+| -bodyRotPos
+  | -body_scale
+    | -body_center_m
+    | -body_coll_pos
+    | -up_body_joint1       |||     OPT
+    | | -left_collar       |||     OPT
+    | | | -shoulder_left_joint       |||     OPT
+    | |   | -shoulder_left
+    | |   | -arm_left_m_
+    | |   | -left_elbow_joint       |||     OPT
+    | |     | -elbow_m_
+    | |     | -arm_left_m
+    | |     | -left_wrist_joint
+    | |       | -wrist_m_
+    | |       | -hand_m_
+    | |       | -LeftHandTip_marker_p
+    | | -right_collar       |||     OPT
+    | | | -shoulder_right_joint       |||     OPT
+    | |   | -shoulder_right_m
+    | |   | -arm_right1_m
+    | |   | -right_elbow_joint       |||     OPT
+    | |     | -elbow_m
+    | |     | -arm_right2_m
+    | |     | -right_wrist_joint
+    | |       | -wrist_m
+    | |       | -hand_m
+    | |       | -RighthandTip_marker_p
+    | | -up_body_m
+    | | -up_body_m_
+    | | -body_coll_up
+    | | | -body_coll_up2
+    | | -neck_joint       |||     OPT
+    |   | -head_m
+    |   | -neck_joint_m
+    |   | -neck_m
+    |   | -HeadTip_marker_p
+    |   | -Head_marker_p
+    | -down_body_joint1_
+      | -down_body_m__
+      | -down_body_m_
+      | -Hips_marker_p
+      | -leg_left_joint_p
+      | | -leg_left_joint       |||     OPT
+      |   | -leg_left_m
+      |   | -thigh_left1_m
+      |   | -knee_left_joint       |||     OPT
+      |     | -knee_left_m
+      |     | -knee_down_left2_m
+      |     | -ankle_left_joint_p
+      |       | -ankle_left_joint       |||     OPT
+      |         | -ankle_left_m
+      |         | -foot_left_m
+      | -leg_right_joint_p
+        | -right_leg_joint       |||     OPT
+          | -leg_right_m_
+          | -thigh_right1_m_
+          | -knee_right_joint_       |||     OPT
+            | -knee_right_m_
+            | -knee_down_right2_m_
+            | -ankle_right_joint_p
+              | -ankle_right_joint       |||     OPT
+                | -ankle_right_m_
+                | -foot_right_m_
+</comment>
+<meshesDirectoryPath></meshesDirectoryPath>
+<nbSegments>65</nbSegments>
+<segment class_id="0" tracking_level="0" version="3">
+	<name>link_000</name>
+	<hook_name>ground</hook_name>
+	<link_type>scaling_uniform</link_type>
+	<scale>1.00000000e+003</scale>
+	<scale>1.00000000e+000</scale>
+	<scale>1.00000000e+000</scale>
+	<scale>0</scale>
+	<scale>0.00000000e+000</scale>
+</segment>
+<segment>
+	<name>body_center</name>
+	<hook_name>ground</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1</trans_X>
+	<trans_X>1.50000000e+002</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>1</trans_Y>
+	<trans_Y>1.50000000e+002</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>1</trans_Z>
+	<trans_Z>1.50000000e+002</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.20000000e+001</Roll>
+	<Roll>1.20000000e+001</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.20000000e+001</Pitch>
+	<Pitch>1.20000000e+001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.20000000e+001</Yaw>
+	<Yaw>1.20000000e+001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>bodyRotPos</name>
+	<hook_name>body_center</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-2.00000000e+000</Roll>
+	<Roll>2.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>5.00000000e-001</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>5.00000000e-001</Pitch>
+	<Yaw>-1.57000005e+000</Yaw>
+	<Yaw>-1.57000005e+000</Yaw>
+	<Yaw>1.57000005e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>5.00000000e-001</Yaw>
+</segment>
+<segment>
+	<name>body_scale</name>
+	<hook_name>bodyRotPos</hook_name>
+	<link_type>scaling_uniform</link_type>
+	<scale>1.00000000e+000</scale>
+	<scale>3.00000012e-001</scale>
+	<scale>2.00000000e+000</scale>
+	<scale>0</scale>
+	<scale>1.00000001e-001</scale>
+</segment>
+<segment>
+	<name>body_center_m</name>
+	<hook_name>body_scale</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>2.00000000e+002</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>2.00000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000012e-001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.00000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>body_coll_pos</name>
+	<hook_name>body_scale</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>-1.00000000e+002</trans_Z>
+	<trans_Z>-1.00000000e+002</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>up_body_joint1</name>
+	<hook_name>body_scale</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-5.00000000e-001</Roll>
+	<Roll>5.00000000e-001</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-2.00000003e-001</Pitch>
+	<Pitch>5.00000000e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.50000000e+000</Yaw>
+	<Yaw>1.50000000e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>left_collar</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.00000001e-001</Roll>
+	<Roll>1.00000001e-001</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.50000006e-001</Yaw>
+	<Yaw>1.00000001e-001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>shoulder_left_joint</name>
+	<hook_name>left_collar</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>1.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>2.00000000e+002</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-2.00000000e+000</Roll>
+	<Roll>1.70000005e+000</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.79999995e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.39999998e+000</Yaw>
+	<Yaw>2.00000000e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>shoulder_left</name>
+	<hook_name>shoulder_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>arm_left_m_</name>
+	<hook_name>shoulder_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>left_elbow_joint</name>
+	<hook_name>shoulder_left_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-6.99999988e-001</Roll>
+	<Roll>6.99999988e-001</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-6.99999988e-001</Pitch>
+	<Pitch>6.99999988e-001</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-2.50000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>elbow_m_</name>
+	<hook_name>left_elbow_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>arm_left_m</name>
+	<hook_name>left_elbow_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>3.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>left_wrist_joint</name>
+	<hook_name>left_elbow_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>-1.57000005e+000</Roll>
+	<Roll>-3.14000010e+000</Roll>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>wrist_m_</name>
+	<hook_name>left_wrist_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>hand_m_</name>
+	<hook_name>left_wrist_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>7.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-7.00000000e+001</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>7.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>LeftHandTip_marker_p</name>
+	<hook_name>left_wrist_joint</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>5.00000000e+001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>right_collar</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.00000001e-001</Roll>
+	<Roll>1.00000001e-001</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.00000001e-001</Yaw>
+	<Yaw>1.50000006e-001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>shoulder_right_joint</name>
+	<hook_name>right_collar</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>-1.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.70000005e+000</Roll>
+	<Roll>2.00000000e+000</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.79999995e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-2.00000000e+000</Yaw>
+	<Yaw>1.39999998e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>shoulder_right_m</name>
+	<hook_name>shoulder_right_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>arm_right1_m</name>
+	<hook_name>shoulder_right_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>right_elbow_joint</name>
+	<hook_name>shoulder_right_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-6.99999988e-001</Roll>
+	<Roll>6.99999988e-001</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-6.99999988e-001</Pitch>
+	<Pitch>6.99999988e-001</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>2.50000000e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>elbow_m</name>
+	<hook_name>right_elbow_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>arm_right2_m</name>
+	<hook_name>right_elbow_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>right_wrist_joint</name>
+	<hook_name>right_elbow_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>-3.14000010e+000</Roll>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>wrist_m</name>
+	<hook_name>right_wrist_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>hand_m</name>
+	<hook_name>right_wrist_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>7.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>7.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>RighthandTip_marker_p</name>
+	<hook_name>right_wrist_joint</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>5.00000000e+001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>up_body_m</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>5.00000000e-001</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>2.50000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e-001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.50000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>up_body_m_</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.50000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>body_coll_up</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>1.10000000e+002</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>1.10000000e+002</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.70000000e+002</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>1.70000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>body_coll_up2</name>
+	<hook_name>body_coll_up</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>-2.20000000e+002</trans_Y>
+	<trans_Y>-2.20000000e+002</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>neck_joint</name>
+	<hook_name>up_body_joint1</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-6.99999988e-001</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-4.00000006e-001</Roll>
+	<Roll>4.00000006e-001</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-3.00000012e-001</Pitch>
+	<Pitch>3.00000012e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>head_m</name>
+	<hook_name>neck_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>1.50000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>1.10000000e+002</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>1.20000000e+002</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.10000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.20000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>1.10000000e+002</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.00000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>neck_joint_m</name>
+	<hook_name>neck_joint</hook_name>
+	<link_type>Trans_scaleU</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-6.99999988e-001</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<scale>5.00000000e+001</scale>
+	<scale>-6.99999988e-001</scale>
+	<scale>5.00000000e+001</scale>
+	<scale>0</scale>
+	<scale>0.00000000e+000</scale>
+</segment>
+<segment>
+	<name>neck_m</name>
+	<hook_name>neck_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>5.00000000e-001</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>1.50000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>1.00000000e+002</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>1.20000000e+002</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.00000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.20000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>6.66665912e-001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.00000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>HeadTip_marker_p</name>
+	<hook_name>neck_joint</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>8.00000000e+001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>8.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>2.00000000e+002</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>2.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>Head_marker_p</name>
+	<hook_name>neck_joint</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.50000000e+002</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>1.50000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>down_body_joint1_</name>
+	<hook_name>body_scale</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>-6.99999988e-001</Roll>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-6.99999988e-001</Pitch>
+	<Pitch>6.99999988e-001</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>down_body_m__</name>
+	<hook_name>down_body_joint1_</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>2.50000000e+002</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.50000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>down_body_m_</name>
+	<hook_name>down_body_joint1_</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>5.00000000e-001</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>2.50000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>2.50000000e+002</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>5.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>1.50000000e+002</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>5.00000000e-001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>2.50000000e+002</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>Hips_marker_p</name>
+	<hook_name>down_body_joint1_</hook_name>
+	<link_type>translation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>-1.00000000e+002</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+</segment>
+<segment>
+	<name>leg_left_joint_p</name>
+	<hook_name>down_body_joint1_</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>-1.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.70000005e+000</Roll>
+	<Roll>2.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>-3.00000000e+000</Pitch>
+	<Pitch>1.20000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.57000005e+000</Yaw>
+	<Yaw>5.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>leg_left_joint</name>
+	<hook_name>leg_left_joint_p</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.57000005e+000</Roll>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.20000005e+000</Yaw>
+	<Yaw>5.00000000e-001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>leg_left_m</name>
+	<hook_name>leg_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>thigh_left1_m</name>
+	<hook_name>leg_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>knee_left_joint</name>
+	<hook_name>leg_left_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-6.99999988e-001</Roll>
+	<Roll>6.99999988e-001</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-2.79999995e+000</Pitch>
+	<Pitch>1.00000001e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>2.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>3.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>knee_left_m</name>
+	<hook_name>knee_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>knee_down_left2_m</name>
+	<hook_name>knee_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>ankle_left_joint_p</name>
+	<hook_name>knee_left_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-3.14000010e+000</Roll>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>8.00000012e-001</Pitch>
+	<Pitch>2.20000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.57000005e+000</Yaw>
+	<Yaw>1.57000005e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>ankle_left_joint</name>
+	<hook_name>ankle_left_joint_p</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-6.00000024e-001</Pitch>
+	<Pitch>6.00000024e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>ankle_left_m</name>
+	<hook_name>ankle_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>foot_left_m</name>
+	<hook_name>ankle_left_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>5.00000000e+001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>7.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-7.00000000e+001</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>7.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>4.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>leg_right_joint_p</name>
+	<hook_name>down_body_joint1_</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>6.99999988e-001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>1.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>2.00000000e+002</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>1.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>5.00000000e+002</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-2.00000000e+000</Roll>
+	<Roll>1.70000005e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>-1.57000005e+000</Pitch>
+	<Pitch>3.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>1.57000005e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>right_leg_joint</name>
+	<hook_name>leg_right_joint_p</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-1.57000005e+000</Roll>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>1</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-1.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-5.00000000e-001</Yaw>
+	<Yaw>1.20000005e+000</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>leg_right_m_</name>
+	<hook_name>right_leg_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>thigh_right1_m_</name>
+	<hook_name>right_leg_joint</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>knee_right_joint_</name>
+	<hook_name>right_leg_joint</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-6.99999988e-001</Roll>
+	<Roll>6.99999988e-001</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-2.79999995e+000</Pitch>
+	<Pitch>1.00000001e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>2.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>3.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>knee_right_m_</name>
+	<hook_name>knee_right_joint_</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>knee_down_right2_m_</name>
+	<hook_name>knee_right_joint_</hook_name>
+	<link_type>Trans_RPYRot_Skew</link_type>
+	<trans_X>5.00000000e-001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>1.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<skew_height>1.00000000e+000</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_height>2.00000000e+002</skew_height>
+	<skew_height>0</skew_height>
+	<skew_height>0.00000000e+000</skew_height>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_baseRadius>3.00000000e+001</skew_baseRadius>
+	<skew_baseRadius>0</skew_baseRadius>
+	<skew_baseRadius>0.00000000e+000</skew_baseRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_topRadius>3.00000000e+001</skew_topRadius>
+	<skew_topRadius>0</skew_topRadius>
+	<skew_topRadius>0.00000000e+000</skew_topRadius>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initHeight>2.00000000e+000</skew_initHeight>
+	<skew_initHeight>0</skew_initHeight>
+	<skew_initHeight>0.00000000e+000</skew_initHeight>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+	<skew_initRadius>1.00000000e+000</skew_initRadius>
+	<skew_initRadius>0</skew_initRadius>
+	<skew_initRadius>0.00000000e+000</skew_initRadius>
+</segment>
+<segment>
+	<name>ankle_right_joint_p</name>
+	<hook_name>knee_right_joint_</hook_name>
+	<link_type>TranslationRPYRotation</link_type>
+	<trans_X>1.00000000e+000</trans_X>
+	<trans_X>-6.99999988e-001</trans_X>
+	<trans_X>2.00000000e+002</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-2.00000000e+002</trans_Y>
+	<trans_Y>6.99999988e-001</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>-6.99999988e-001</trans_Z>
+	<trans_Z>6.99999988e-001</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>-3.14000010e+000</Roll>
+	<Roll>3.14000010e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>1.57000005e+000</Pitch>
+	<Pitch>8.00000012e-001</Pitch>
+	<Pitch>2.20000005e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-1.57000005e+000</Yaw>
+	<Yaw>1.57000005e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>ankle_right_joint</name>
+	<hook_name>ankle_right_joint_p</hook_name>
+	<link_type>RPYRotation</link_type>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>1.57000005e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>-6.00000024e-001</Pitch>
+	<Pitch>6.00000024e-001</Pitch>
+	<Pitch>1</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>-6.99999988e-001</Yaw>
+	<Yaw>6.99999988e-001</Yaw>
+	<Yaw>1</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+</segment>
+<segment>
+	<name>ankle_right_m_</name>
+	<hook_name>ankle_right_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>1.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>1.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>1.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>3.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.00000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>3.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>3.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<segment>
+	<name>foot_right_m_</name>
+	<hook_name>ankle_right_joint</hook_name>
+	<link_type>Trans_RPYRot_Scaling</link_type>
+	<trans_X>5.00000000e+001</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_X>7.00000000e+001</trans_X>
+	<trans_X>0</trans_X>
+	<trans_X>0.00000000e+000</trans_X>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>-7.00000000e+001</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Y>0</trans_Y>
+	<trans_Y>0.00000000e+000</trans_Y>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<trans_Z>0</trans_Z>
+	<trans_Z>0.00000000e+000</trans_Z>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Roll>0</Roll>
+	<Roll>0.00000000e+000</Roll>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Pitch>0</Pitch>
+	<Pitch>0.00000000e+000</Pitch>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<Yaw>0</Yaw>
+	<Yaw>0.00000000e+000</Yaw>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>1.00000000e+000</scale_X>
+	<scale_X>7.00000000e+001</scale_X>
+	<scale_X>0</scale_X>
+	<scale_X>0.00000000e+000</scale_X>
+	<scale_Y>1.50000000e+001</scale_Y>
+	<scale_Y>1.00000000e+000</scale_Y>
+	<scale_Y>7.00000000e+001</scale_Y>
+	<scale_Y>0</scale_Y>
+	<scale_Y>0.00000000e+000</scale_Y>
+	<scale_Z>4.00000000e+001</scale_Z>
+	<scale_Z>1.00000000e+000</scale_Z>
+	<scale_Z>5.00000000e+001</scale_Z>
+	<scale_Z>0</scale_Z>
+	<scale_Z>0.00000000e+000</scale_Z>
+</segment>
+<nbMeshes>33</nbMeshes>
+<mesh class_id="1" tracking_level="0" version="0">
+	<mesh_name>body_center_m</mesh_name>
+	<hook_segment_name>body_center_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>yellow</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>head_m</mesh_name>
+	<hook_segment_name>head_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>neck_joint_m</mesh_name>
+	<hook_segment_name>neck_joint_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>white</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>shoulder_right_m</mesh_name>
+	<hook_segment_name>shoulder_right_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>elbow_m</mesh_name>
+	<hook_segment_name>elbow_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>wrist_m</mesh_name>
+	<hook_segment_name>wrist_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>hand_m</mesh_name>
+	<hook_segment_name>hand_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>arm_right1_m</mesh_name>
+	<hook_segment_name>arm_right1_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>arm_right2_m</mesh_name>
+	<hook_segment_name>arm_right2_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>up_body_m</mesh_name>
+	<hook_segment_name>up_body_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>yellow</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>shoulder_left</mesh_name>
+	<hook_segment_name>shoulder_left</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>elbow_m_</mesh_name>
+	<hook_segment_name>elbow_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>wrist_m_</mesh_name>
+	<hook_segment_name>wrist_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>hand_m_</mesh_name>
+	<hook_segment_name>hand_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>arm_left</mesh_name>
+	<hook_segment_name>arm_left_m_</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>arm_left_</mesh_name>
+	<hook_segment_name>arm_left_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_left_m_</mesh_name>
+	<hook_segment_name>leg_left_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>knee_left_m</mesh_name>
+	<hook_segment_name>knee_left_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>wrist_m__</mesh_name>
+	<hook_segment_name>ankle_left_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>hand_m__</mesh_name>
+	<hook_segment_name>foot_left_m</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_left1_m</mesh_name>
+	<hook_segment_name>thigh_left1_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_left2_m</mesh_name>
+	<hook_segment_name>knee_down_left2_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>down_body_m__</mesh_name>
+	<hook_segment_name>down_body_m_</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>purple</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_left_m__</mesh_name>
+	<hook_segment_name>body_center</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>knee_right_m_</mesh_name>
+	<hook_segment_name>knee_right_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>wrist_m___</mesh_name>
+	<hook_segment_name>ankle_right_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>hand_m___</mesh_name>
+	<hook_segment_name>foot_right_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>green</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_right1_m</mesh_name>
+	<hook_segment_name>thigh_right1_m_</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_right2_m</mesh_name>
+	<hook_segment_name>knee_down_right2_m_</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>up_body_m_</mesh_name>
+	<hook_segment_name>up_body_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>down_body_m___</mesh_name>
+	<hook_segment_name>down_body_m__</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>head_m_</mesh_name>
+	<hook_segment_name>neck_m</hook_segment_name>
+	<mesh_file_path>cylinder.obj</mesh_file_path>
+	<mesh_color>red</mesh_color>
+</mesh>
+<mesh>
+	<mesh_name>leg_right_m_</mesh_name>
+	<hook_segment_name>leg_right_m_</hook_segment_name>
+	<mesh_file_path>sphere.obj</mesh_file_path>
+	<mesh_color>blue</mesh_color>
+</mesh>
+<nbMetaVars>23</nbMetaVars>
+<metaVar class_id="2" tracking_level="0" version="3">
+	<name>upper_body_length</name>
+	<operationType>multiply</operationType>
+	<value>3.00000000e+002</value>
+	<min>3.00000012e-001</min>
+	<max>6.00000024e-001</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>body_center_m</seg>
+	<param>trans_Z</param>
+	<seg>body_center_m</seg>
+	<param>scale_Z</param>
+	<seg>up_body_m</seg>
+	<param>trans_Z</param>
+	<seg>up_body_m</seg>
+	<param>scale_Z</param>
+	<seg>neck_joint</seg>
+	<param>trans_Z</param>
+	<seg>up_body_m_</seg>
+	<param>trans_Z</param>
+	<seg>right_collar</seg>
+	<param>trans_Z</param>
+	<seg>left_collar</seg>
+	<param>trans_Z</param>
+</metaVar>
+<metaVar>
+	<name>lower_body_length</name>
+	<operationType>multiply</operationType>
+	<value>3.00000000e+002</value>
+	<min>0.00000000e+000</min>
+	<max>0.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>leg_left_joint_p</seg>
+	<param>trans_Z</param>
+	<seg>leg_right_joint_p</seg>
+	<param>trans_Z</param>
+	<seg>Hips_marker_p</seg>
+	<param>trans_Z</param>
+	<seg>down_body_m__</seg>
+	<param>trans_Z</param>
+	<seg>down_body_m_</seg>
+	<param>trans_Z</param>
+	<seg>down_body_m_</seg>
+	<param>scale_Z</param>
+</metaVar>
+<metaVar>
+	<name>legs_hip_distance</name>
+	<operationType>multiply</operationType>
+	<value>9.00000000e+001</value>
+	<min>2.00000003e-001</min>
+	<max>6.00000024e-001</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>2</nb_slaves>
+	<seg>leg_left_joint_p</seg>
+	<param>trans_Y</param>
+	<seg>leg_right_joint_p</seg>
+	<param>trans_Y</param>
+</metaVar>
+<metaVar>
+	<name>shoulders_neck_distance</name>
+	<operationType>multiply</operationType>
+	<value>1.35000000e+002</value>
+	<min>4.00000006e-001</min>
+	<max>8.00000012e-001</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>2</nb_slaves>
+	<seg>shoulder_right_joint</seg>
+	<param>trans_Y</param>
+	<seg>shoulder_left_joint</seg>
+	<param>trans_Y</param>
+</metaVar>
+<metaVar>
+	<name>back_arm_length</name>
+	<operationType>multiply</operationType>
+	<value>2.60000000e+002</value>
+	<min>5.00000000e-001</min>
+	<max>1.29999995e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>arm_right1_m</seg>
+	<param>skew_height</param>
+	<seg>arm_left_m_</seg>
+	<param>skew_height</param>
+	<seg>right_elbow_joint</seg>
+	<param>trans_X</param>
+	<seg>left_elbow_joint</seg>
+	<param>trans_X</param>
+	<seg>arm_right1_m</seg>
+	<param>trans_X</param>
+	<seg>arm_left_m_</seg>
+	<param>trans_X</param>
+</metaVar>
+<metaVar>
+	<name>fore_arm_length</name>
+	<operationType>multiply</operationType>
+	<value>2.60000000e+002</value>
+	<min>5.00000000e-001</min>
+	<max>1.20000005e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>arm_right2_m</seg>
+	<param>trans_X</param>
+	<seg>arm_left_m</seg>
+	<param>trans_X</param>
+	<seg>arm_right2_m</seg>
+	<param>skew_height</param>
+	<seg>arm_left_m</seg>
+	<param>skew_height</param>
+	<seg>right_wrist_joint</seg>
+	<param>trans_X</param>
+	<seg>left_wrist_joint</seg>
+	<param>trans_X</param>
+</metaVar>
+<metaVar>
+	<name>back_leg_length</name>
+	<operationType>multiply</operationType>
+	<value>2.60000000e+002</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>thigh_left1_m</seg>
+	<param>trans_X</param>
+	<seg>thigh_right1_m_</seg>
+	<param>trans_X</param>
+	<seg>thigh_left1_m</seg>
+	<param>skew_height</param>
+	<seg>thigh_right1_m_</seg>
+	<param>skew_height</param>
+	<seg>knee_left_joint</seg>
+	<param>trans_X</param>
+	<seg>knee_right_joint_</seg>
+	<param>trans_X</param>
+</metaVar>
+<metaVar>
+	<name>front_leg_length</name>
+	<operationType>multiply</operationType>
+	<value>2.60000000e+002</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>ankle_left_joint_p</seg>
+	<param>trans_X</param>
+	<seg>ankle_right_joint_p</seg>
+	<param>trans_X</param>
+	<seg>knee_down_left2_m</seg>
+	<param>trans_X</param>
+	<seg>knee_down_right2_m_</seg>
+	<param>trans_X</param>
+	<seg>knee_down_left2_m</seg>
+	<param>skew_height</param>
+	<seg>knee_down_right2_m_</seg>
+	<param>skew_height</param>
+</metaVar>
+<metaVar>
+	<name>head_neck_distance</name>
+	<operationType>multiply</operationType>
+	<value>2.00000000e+002</value>
+	<min>0.00000000e+000</min>
+	<max>0.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>3</nb_slaves>
+	<seg>head_m</seg>
+	<param>trans_Z</param>
+	<seg>neck_m</seg>
+	<param>trans_Z</param>
+	<seg>neck_m</seg>
+	<param>scale_Z</param>
+</metaVar>
+<metaVar>
+	<name>leg_root_thickness</name>
+	<operationType>multiply</operationType>
+	<value>2.00000000e+000</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>leg_left_m</seg>
+	<param>scale_X</param>
+	<seg>leg_left_m</seg>
+	<param>scale_Y</param>
+	<seg>leg_left_m</seg>
+	<param>scale_Z</param>
+	<seg>leg_right_m_</seg>
+	<param>scale_X</param>
+	<seg>leg_right_m_</seg>
+	<param>scale_Y</param>
+	<seg>leg_right_m_</seg>
+	<param>scale_Z</param>
+	<seg>thigh_left1_m</seg>
+	<param>skew_baseRadius</param>
+	<seg>thigh_right1_m_</seg>
+	<param>skew_baseRadius</param>
+</metaVar>
+<metaVar>
+	<name>leg_knee_size</name>
+	<operationType>multiply</operationType>
+	<value>1.79999995e+000</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>10</nb_slaves>
+	<seg>knee_down_left2_m</seg>
+	<param>skew_baseRadius</param>
+	<seg>knee_down_right2_m_</seg>
+	<param>skew_baseRadius</param>
+	<seg>knee_left_m</seg>
+	<param>scale_X</param>
+	<seg>knee_left_m</seg>
+	<param>scale_Y</param>
+	<seg>knee_left_m</seg>
+	<param>scale_Z</param>
+	<seg>knee_right_m_</seg>
+	<param>scale_X</param>
+	<seg>knee_right_m_</seg>
+	<param>scale_Y</param>
+	<seg>knee_right_m_</seg>
+	<param>scale_Z</param>
+	<seg>thigh_left1_m</seg>
+	<param>skew_topRadius</param>
+	<seg>thigh_right1_m_</seg>
+	<param>skew_topRadius</param>
+</metaVar>
+<metaVar>
+	<name>ankle_size</name>
+	<operationType>multiply</operationType>
+	<value>1.60000002e+000</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>ankle_left_m</seg>
+	<param>scale_X</param>
+	<seg>ankle_left_m</seg>
+	<param>scale_Y</param>
+	<seg>ankle_left_m</seg>
+	<param>scale_Z</param>
+	<seg>ankle_right_m_</seg>
+	<param>scale_X</param>
+	<seg>ankle_right_m_</seg>
+	<param>scale_Y</param>
+	<seg>ankle_right_m_</seg>
+	<param>scale_Z</param>
+	<seg>knee_down_left2_m</seg>
+	<param>skew_topRadius</param>
+	<seg>knee_down_right2_m_</seg>
+	<param>skew_topRadius</param>
+</metaVar>
+<metaVar>
+	<name>shoulders_size</name>
+	<operationType>multiply</operationType>
+	<value>1.79999995e+000</value>
+	<min>1.39999998e+000</min>
+	<max>2.50000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>shoulder_right_m</seg>
+	<param>scale_X</param>
+	<seg>shoulder_right_m</seg>
+	<param>scale_Y</param>
+	<seg>shoulder_right_m</seg>
+	<param>scale_Z</param>
+	<seg>shoulder_left</seg>
+	<param>scale_X</param>
+	<seg>shoulder_left</seg>
+	<param>scale_Y</param>
+	<seg>shoulder_left</seg>
+	<param>scale_Z</param>
+	<seg>arm_right1_m</seg>
+	<param>skew_baseRadius</param>
+	<seg>arm_left_m_</seg>
+	<param>skew_baseRadius</param>
+</metaVar>
+<metaVar>
+	<name>elbow_size</name>
+	<operationType>multiply</operationType>
+	<value>1.50000000e+000</value>
+	<min>8.00000012e-001</min>
+	<max>1.79999995e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>10</nb_slaves>
+	<seg>arm_right1_m</seg>
+	<param>skew_topRadius</param>
+	<seg>arm_left_m_</seg>
+	<param>skew_topRadius</param>
+	<seg>elbow_m</seg>
+	<param>scale_X</param>
+	<seg>elbow_m</seg>
+	<param>scale_Y</param>
+	<seg>elbow_m</seg>
+	<param>scale_Z</param>
+	<seg>elbow_m_</seg>
+	<param>scale_X</param>
+	<seg>elbow_m_</seg>
+	<param>scale_Y</param>
+	<seg>elbow_m_</seg>
+	<param>scale_Z</param>
+	<seg>arm_right2_m</seg>
+	<param>skew_baseRadius</param>
+	<seg>arm_left_m</seg>
+	<param>skew_baseRadius</param>
+</metaVar>
+<metaVar>
+	<name>wrist_size</name>
+	<operationType>multiply</operationType>
+	<value>1.39999998e+000</value>
+	<min>8.00000012e-001</min>
+	<max>1.50000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>wrist_m</seg>
+	<param>scale_X</param>
+	<seg>wrist_m</seg>
+	<param>scale_Y</param>
+	<seg>wrist_m</seg>
+	<param>scale_Z</param>
+	<seg>wrist_m_</seg>
+	<param>scale_X</param>
+	<seg>wrist_m_</seg>
+	<param>scale_Y</param>
+	<seg>wrist_m_</seg>
+	<param>scale_Z</param>
+	<seg>arm_right2_m</seg>
+	<param>skew_topRadius</param>
+	<seg>arm_left_m</seg>
+	<param>skew_topRadius</param>
+</metaVar>
+<metaVar>
+	<name>body_thickness</name>
+	<operationType>multiply</operationType>
+	<value>2.20000005e+000</value>
+	<min>1.39999998e+000</min>
+	<max>2.20000005e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>5</nb_slaves>
+	<seg>body_center_m</seg>
+	<param>scale_X</param>
+	<seg>up_body_m</seg>
+	<param>scale_X</param>
+	<seg>down_body_m_</seg>
+	<param>scale_X</param>
+	<seg>up_body_m_</seg>
+	<param>scale_X</param>
+	<seg>down_body_m__</seg>
+	<param>scale_X</param>
+</metaVar>
+<metaVar>
+	<name>body_size</name>
+	<operationType>multiply</operationType>
+	<value>1.10000002e+000</value>
+	<min>5.00000000e-001</min>
+	<max>1.20000005e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>5</nb_slaves>
+	<seg>body_center_m</seg>
+	<param>scale_Y</param>
+	<seg>up_body_m</seg>
+	<param>scale_Y</param>
+	<seg>up_body_m_</seg>
+	<param>scale_Y</param>
+	<seg>down_body_m__</seg>
+	<param>scale_Y</param>
+	<seg>down_body_m_</seg>
+	<param>scale_Y</param>
+</metaVar>
+<metaVar>
+	<name>head_size</name>
+	<operationType>multiply</operationType>
+	<value>8.99999976e-001</value>
+	<min>5.00000000e-001</min>
+	<max>1.20000005e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>5</nb_slaves>
+	<seg>head_m</seg>
+	<param>scale_X</param>
+	<seg>head_m</seg>
+	<param>scale_Y</param>
+	<seg>head_m</seg>
+	<param>scale_Z</param>
+	<seg>neck_m</seg>
+	<param>scale_X</param>
+	<seg>neck_m</seg>
+	<param>scale_Y</param>
+</metaVar>
+<metaVar>
+	<name>feets_size</name>
+	<operationType>multiply</operationType>
+	<value>1.29999995e+000</value>
+	<min>1.00000000e+000</min>
+	<max>2.00000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>8</nb_slaves>
+	<seg>foot_left_m</seg>
+	<param>scale_X</param>
+	<seg>foot_left_m</seg>
+	<param>scale_Y</param>
+	<seg>foot_left_m</seg>
+	<param>scale_Z</param>
+	<seg>foot_right_m_</seg>
+	<param>scale_X</param>
+	<seg>foot_right_m_</seg>
+	<param>scale_Y</param>
+	<seg>foot_right_m_</seg>
+	<param>scale_Z</param>
+	<seg>foot_left_m</seg>
+	<param>trans_X</param>
+	<seg>foot_right_m_</seg>
+	<param>trans_X</param>
+</metaVar>
+<metaVar>
+	<name>hand_size</name>
+	<operationType>multiply</operationType>
+	<value>1.00000001e-001</value>
+	<min>1.00000001e-001</min>
+	<max>1.00000001e-001</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>6</nb_slaves>
+	<seg>hand_m</seg>
+	<param>scale_X</param>
+	<seg>hand_m</seg>
+	<param>scale_Y</param>
+	<seg>hand_m</seg>
+	<param>scale_Z</param>
+	<seg>hand_m_</seg>
+	<param>scale_X</param>
+	<seg>hand_m_</seg>
+	<param>scale_Y</param>
+	<seg>hand_m_</seg>
+	<param>scale_Z</param>
+</metaVar>
+<metaVar>
+	<name>arms_position</name>
+	<operationType>multiply</operationType>
+	<value>1.00000000e+000</value>
+	<min>5.00000000e-001</min>
+	<max>1.20000005e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>2</nb_slaves>
+	<seg>shoulder_right_joint</seg>
+	<param>trans_Z</param>
+	<seg>shoulder_left_joint</seg>
+	<param>trans_Z</param>
+</metaVar>
+<metaVar>
+	<name>legs_position</name>
+	<operationType>multiply</operationType>
+	<value>1.00000000e+000</value>
+	<min>3.00000012e-001</min>
+	<max>8.00000012e-001</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>3</nb_slaves>
+	<seg>leg_left_joint_p</seg>
+	<param>trans_Z</param>
+	<seg>leg_right_joint_p</seg>
+	<param>trans_Z</param>
+	<seg>Hips_marker_p</seg>
+	<param>trans_Z</param>
+</metaVar>
+<metaVar>
+	<name>feets_thickness</name>
+	<operationType>multiply</operationType>
+	<value>2.29999995e+000</value>
+	<min>1.50000000e+000</min>
+	<max>2.50000000e+000</max>
+	<optimize>0</optimize>
+	<active>1</active>
+	<variance>0.00000000e+000</variance>
+	<nb_slaves>2</nb_slaves>
+	<seg>foot_left_m</seg>
+	<param>scale_Y</param>
+	<seg>foot_right_m_</seg>
+	<param>scale_Y</param>
+</metaVar>
+<nbMarkers>51</nbMarkers>
+<marker class_id="3" tracking_level="0" version="0">
+	<markerType>tag marker</markerType>
+	<name>Chest_0_17</name>
+	<hook_name>body_scale</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>Chest</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>Hips_17_17</name>
+	<hook_name>Hips_marker_p</hook_name>
+	<colB>2.55000000e+002</colB>
+	<colG>2.55000000e+002</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>Hips</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>Neck_1_0</name>
+	<hook_name>neck_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>Neck</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>Head_2_1</name>
+	<hook_name>Head_marker_p</hook_name>
+	<colB>2.55000000e+002</colB>
+	<colG>2.55000000e+002</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>Head</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>HeadTip_18_2</name>
+	<hook_name>HeadTip_marker_p</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>HeadTip</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightCollar_19_0</name>
+	<hook_name>neck_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightCollar</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightShoulder_3_19</name>
+	<hook_name>shoulder_right_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightShoulder</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightElbow_4_3</name>
+	<hook_name>right_elbow_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightElbow</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightWrist_5_4</name>
+	<hook_name>right_wrist_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightWrist</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RighthandTip_20_5</name>
+	<hook_name>RighthandTip_marker_p</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightHandTip</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftCollar_22_0</name>
+	<hook_name>neck_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftCollar</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftShoulder_6_22</name>
+	<hook_name>shoulder_left_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftShoulder</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftElbow_7_6</name>
+	<hook_name>left_elbow_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftElbow</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftWrist_8_7</name>
+	<hook_name>left_wrist_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftWrist</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftHandTip_21_8</name>
+	<hook_name>LeftHandTip_marker_p</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftHandTip</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightHip_13_17</name>
+	<hook_name>right_leg_joint</hook_name>
+	<colB>2.55000000e+002</colB>
+	<colG>2.55000000e+002</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightHip</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightKnee_14_13</name>
+	<hook_name>knee_right_joint_</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightKnee</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightAnkle_15_14</name>
+	<hook_name>ankle_right_joint_p</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightAnkle</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>RightFoot_16_15</name>
+	<hook_name>foot_right_m_</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>RightFoot</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftHip_29_17</name>
+	<hook_name>leg_left_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftHip</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftKnee_30_29</name>
+	<hook_name>knee_left_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftKnee</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftAnkle_31_30</name>
+	<hook_name>ankle_left_joint</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftAnkle</text>
+</marker>
+<marker>
+	<markerType>tag marker</markerType>
+	<name>LeftFoot_32_31</name>
+	<hook_name>foot_left_m</hook_name>
+	<colB>0.00000000e+000</colB>
+	<colG>0.00000000e+000</colG>
+	<colR>2.55000000e+002</colR>
+	<thickness>1.00000000e+000</thickness>
+	<scale>1.00000000e+000</scale>
+	<draw_point>1</draw_point>
+	<text>LeftFoot</text>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_head</name>
+	<hook_name>head_m</hook_name>
+	<radius>1.10000000e+002</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_arm_elbow</name>
+	<hook_name>right_elbow_joint</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_arm_elbow2</name>
+	<hook_name>arm_right2_m</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_arm_wrist</name>
+	<hook_name>right_wrist_joint</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_elbow</name>
+	<hook_name>left_elbow_joint</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_arm_elbow2</name>
+	<hook_name>arm_left_m</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_arm_wrist</name>
+	<hook_name>left_wrist_joint</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_root</name>
+	<hook_name>leg_left_joint_p</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_thigh</name>
+	<hook_name>thigh_left1_m</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_knee</name>
+	<hook_name>knee_left_joint</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_knee2</name>
+	<hook_name>knee_down_left2_m</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_ankle</name>
+	<hook_name>ankle_left_joint</hook_name>
+	<radius>4.50000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_root</name>
+	<hook_name>leg_right_joint_p</hook_name>
+	<radius>8.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_thigh</name>
+	<hook_name>thigh_right1_m_</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_knee</name>
+	<hook_name>knee_right_joint_</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_knee2</name>
+	<hook_name>knee_down_right2_m_</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_ankle</name>
+	<hook_name>ankle_right_joint_p</hook_name>
+	<radius>4.50000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_leg_foot</name>
+	<hook_name>foot_right_m_</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_leg_foot</name>
+	<hook_name>foot_left_m</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>0</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_body_center</name>
+	<hook_name>body_center_m</hook_name>
+	<radius>1.40000000e+002</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_neck</name>
+	<hook_name>neck_joint_m</hook_name>
+	<radius>1.20000000e+002</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_arm_shoulder2</name>
+	<hook_name>arm_right1_m</hook_name>
+	<radius>5.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_right_arm_shoulder</name>
+	<hook_name>shoulder_right_m</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_arm_shoulder</name>
+	<hook_name>shoulder_left_joint</hook_name>
+	<radius>6.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_left_arm_shoulder2</name>
+	<hook_name>arm_left_m_</hook_name>
+	<radius>5.50000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_body_low</name>
+	<hook_name>body_coll_pos</hook_name>
+	<radius>1.40000000e+002</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_body_up1</name>
+	<hook_name>body_coll_up</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+<marker>
+	<markerType>sphere marker</markerType>
+	<name>coll_body_up2</name>
+	<hook_name>body_coll_up2</hook_name>
+	<radius>7.00000000e+001</radius>
+	<no_static_collisions>1</no_static_collisions>
+</marker>
+</boost_serialization>
+
