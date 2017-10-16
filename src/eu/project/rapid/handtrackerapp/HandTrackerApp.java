@@ -7,7 +7,8 @@ class HandTrackerApp
 {
 	public static void main(String[] args) throws Exception
 	{
-		DFE dfe = DFE.getInstance();
+                //System.out.println("Starting up HandTracker..!\n");
+		DFE dfe = DFE.getInstance("127.0.0.1"); //"127.0.0.1"
 		HandTracker tracker = null;
 		
 		if (args.length > 1)
