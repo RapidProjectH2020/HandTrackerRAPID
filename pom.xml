@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.project.rapid.handtracker</groupId>
 	<artifactId>HandTrackerApp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>HandTrackerApp</name>
 	<description>This is a preliminary port of the HandTracker over the RAPID infrastructure</description>
 	<build>
@@ -23,18 +23,6 @@
 			</resource>
 		</resources>
 		<plugins>
-		  <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-            </plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
@@ -44,7 +32,7 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			<!-- This is to make the jar runnable -->
+				<!-- This is to make the jar runnable -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>2.4.3</version>
@@ -55,9 +43,9 @@
 							<goal>shade</goal>
 						</goals>
 						<configuration>
-						<!-- Configuration needed to avoid the following error when trying to run the jar file:
-						"Exception in thread "main" java.lang.SecurityException:
-						 Invalid signature file digest for Manifest main attributes" -->
+							<!-- Configuration needed to avoid the following error when trying 
+								to run the jar file: "Exception in thread "main" java.lang.SecurityException: 
+								Invalid signature file digest for Manifest main attributes" -->
 							<filters>
 								<filter>
 									<artifact>*:*</artifact>
@@ -92,10 +80,29 @@
 			<version>2.5</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.project.rapid.ac</groupId>
-			<artifactId>AccelerationClient</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>eu.project.rapid</groupId>
+			<artifactId>rapid-linux-ac</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
+        <dependency>
+            <groupId>eu.project.rapid</groupId>
+            <artifactId>rapid-gvirtus4j</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>eu.project.rapid</groupId>
+			<artifactId>rapid-common</artifactId>
+			<version>0.0.5</version>
+		</dependency>
+		<!--
+		 <dependency>
+			<groupId>eu.project.rapid</groupId>
+			<artifactId>rapid-linux-ac</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		-->
 	</dependencies>
 </project>
