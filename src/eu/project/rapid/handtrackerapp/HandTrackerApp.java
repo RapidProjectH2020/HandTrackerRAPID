@@ -8,7 +8,7 @@ class HandTrackerApp
 {
 	public static void main(String[] args) throws Exception
 	{
-                String ip="139.91.185.16";
+                String ip="127.0.0.1";
 		DFE dfe = DFE.getInstance(ip);
 		HandTracker tracker = new HandTracker(dfe);
 
@@ -21,7 +21,7 @@ class HandTrackerApp
 
 		while (!stop)
 		{
-			//double start = HandTrackerJNI.getTime();
+			double start = HandTrackerJNI.getTime();
 			
 			HandTrackerJNI.Step1Output step1o = tracker.step1_grab();
 
@@ -83,14 +83,14 @@ class HandTrackerApp
 
 			if (tracking)
 			{
-				//double now = HandTrackerJNI.getTime();
-				//time += 10;//now - start;
+				double now = HandTrackerJNI.getTime();
+				time = now - start;
 				iterations++;				
 			}
 
 		}
 		
-		//System.out.print(String.format("FPS : %f", time / iterations));
-                  System.out.println(String.format("Iterations %03d", iterations));
+		System.out.print(String.format("FPS : %f", time / iterations));
+               //System.out.println(String.format("Iterations %03d", iterations));
 	}
 }
