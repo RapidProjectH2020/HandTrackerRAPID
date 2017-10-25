@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #source ~/mbv03.sh 
-HANDTRACKERLIBS_DIR="/home/ammar/Documents/Programming/FORTH/rapid/HandTrackerRAPID/Resources/libs/"
-HANDTRACKERLIBS_DIR="/home/ammar/rapid-server/libs/"
+HANDTRACKERLIBS_DIR="$DIR/../Resources/libs/"
+#HANDTRACKERLIBS_DIR="/home/ammar/rapid-server/libs/"
  
 
 cd ~/Documents/Programming/FORTH/rapid/rapid-linux/AccelerationServer/target/
