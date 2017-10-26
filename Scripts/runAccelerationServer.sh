@@ -1,11 +1,18 @@
 #!/bin/bash
 
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
+
+cd ~
+HOME_DIR=`pwd`
+cd "$DIR"
+
 #source ~/mbv03.sh 
-HANDTRACKERLIBS_DIR="$DIR/../Resources/libs/"
-#HANDTRACKERLIBS_DIR="/home/ammar/rapid-server/libs/"
+LIBS_DIR="$HOME_DIR/rapid-server/libs/"
  
 
-cd ~/Documents/Programming/FORTH/rapid/rapid-linux/AccelerationServer/target/
-LD_LIBRARY_PATH=$HANDTRACKERLIBS_DIR java -Djava.library.path=$HANDTRACKERLIBS_DIR -jar rapid-linux-as-0.0.2-SNAPSHOT.jar &> ~/Documents/Programming/FORTH/rapid/lastAccelerationServerRun.txt 
+cd ../../rapid-linux/AccelerationServer/target/
+LD_LIBRARY_PATH=$LIBS_DIR java -Djava.library.path="$LIBS_DIR" -jar rapid-linux-as-0.0.2-SNAPSHOT.jar &> ~/Documents/Programming/FORTH/rapid/lastAccelerationServerRun.txt 
 
 exit 0
