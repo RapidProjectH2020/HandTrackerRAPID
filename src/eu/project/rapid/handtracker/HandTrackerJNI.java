@@ -172,12 +172,12 @@ public class HandTrackerJNI implements java.io.Serializable
 
 	public static void main(String args[]) throws Exception
 	{
+                System.out.println("HandTrackerApp Java standalone started with "+args.length+" arguments , which are not used anyways..\n");
 		HandTrackerJNI tracker = new HandTrackerJNI();
 
 		boolean tracking = false;
 		boolean stop = false;
-		double[] x = HandTrackerJNI.getDefaultInitPos(); 
-                //double[] x =  { 0.0, 0 ,900 ,0 ,0 ,1,0 , 1.20946707135219810e-001 ,1.57187812868051640e+000 ,9.58033504364020840e-003 , -1.78593063562731860e-001 , 7.89636216585289100e-002 ,2.67967456875403400e+000 , 1.88385552327860720e-001 , 2.20049375319072360e-002 ,-4.09740579183203310e-002 , 1.52145111735213370e+000 , 1.48366400350912500e-001 , 2.85607073734409630e-002 ,-4.53781680931323280e-003 , 1.52743247624671910e+000 ,1.01751907812505270e-001 , 1.08706683246161150e-001 ,8.10845240231484330e-003 , 1.49009228214971090e+000 ,4.64716068193632560e-002 ,-1.44370358851376110e-001 };              
+		double[] x = HandTrackerJNI.getDefaultInitPos();             
   
 		double trackingLoopTime = 0.0;
 		int trackingLoopIterations = 0;

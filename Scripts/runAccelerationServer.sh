@@ -13,6 +13,6 @@ LIBS_DIR="$HOME_DIR/rapid-server/libs/"
  
 
 cd ../../rapid-linux/AccelerationServer/target/
-LD_LIBRARY_PATH=$LIBS_DIR java -Djava.library.path="$LIBS_DIR" -jar rapid-linux-as-0.0.2-SNAPSHOT.jar &> ~/Documents/Programming/FORTH/rapid/lastAccelerationServerRun.txt 
+LD_LIBRARY_PATH=$LIBS_DIR java -Djava.library.path="$LIBS_DIR" -jar rapid-linux-as-0.0.2-SNAPSHOT.jar $@ &> ~/Documents/Programming/FORTH/rapid/lastAccelerationServerRun.txt 
 
 exit 0

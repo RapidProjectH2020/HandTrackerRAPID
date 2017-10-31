@@ -8,7 +8,19 @@ class HandTrackerApp
 {
 	public static void main(String[] args) throws Exception
 	{
-                String ip="127.0.0.1";
+                System.out.println("HandTrackerApp for RAPID started with "+args.length+" arguments\n");
+                String ip="127.0.0.1"; 
+
+                for (int i=0; i<args.length; i++)
+                  {
+                     if ( (args[i].equals("-ip")) && (i+1<args.length) ) 
+                     {
+                       ip = args[i+1];
+                     }
+                  }
+                
+                 System.out.println("HandTrackerApp will try to connect to IP : "+ip+"\n");
+
 		DFE dfe = DFE.getInstance(ip);
 		HandTracker tracker = new HandTracker(dfe);
 
