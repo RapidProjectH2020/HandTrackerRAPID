@@ -1,0 +1,6 @@
+#This is an acquisition script 
+#you can run it using ./run_viewer.sh -module SCRIPTED -from ../scripts/script.acquisition
+acquisitionStartModule(OPENNI2,1,void);
+acquisitionOpenDevice(OPENNI2,0,0,640,480,30);
+#acquisitionStartModule(TEMPLATE,1,void);
+#acquisitionOpenDevice(TEMPLATE,0,human,640,480,30);
