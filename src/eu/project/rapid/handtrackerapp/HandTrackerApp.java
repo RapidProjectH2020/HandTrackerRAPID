@@ -10,12 +10,21 @@ class HandTrackerApp
 	{
                 System.out.println("HandTrackerApp for RAPID started with "+args.length+" arguments\n");
                 String ip="127.0.0.1"; 
+                
+                int framesReceived=0; 
+                boolean enableAutostart=false;
+                int autostart=0;
 
                 for (int i=0; i<args.length; i++)
                   {
                      if ( (args[i].equals("-ip")) && (i+1<args.length) ) 
                      {
                        ip = args[i+1];
+                     }
+                     if ( (args[i].equals("-autostart")) && (i+1<args.length) ) 
+                     {
+                       autostart = Integer.parseInt(args[i+1]);
+                       enableAutostart = true;
                      }
                   }
                 
@@ -36,6 +45,7 @@ class HandTrackerApp
 			double start = HandTrackerJNI.getTime();
 			
 			HandTrackerJNI.Step1Output step1o = tracker.step1_grab();
+                        ++framesReceived;
 
 			if (tracking)
 			{
@@ -81,6 +91,16 @@ class HandTrackerApp
 
 			tracker.showImage("Viz", step6o.viz);
 			int key = tracker.waitKey(1);
+                        
+
+                       if (enableAutostart)
+                         {
+                          if (autostart==framesReceived)
+                           {
+                             key='s';
+                             enableAutostart=false;
+                           }  
+                         }
 
 			if (key == 's')
 			{
@@ -96,13 +116,13 @@ class HandTrackerApp
 			if (tracking)
 			{
 				double now = HandTrackerJNI.getTime();
-				time = now - start;
+				time = now - start; 
 				iterations++;				
 			}
 
 		}
 		
-		System.out.print(String.format("FPS : %f", time / iterations));
-               //System.out.println(String.format("Iterations %03d", iterations));
+	     if (iterations>0) { System.out.print(String.format("FPS : %f \n", time / iterations)); } else
+                                { System.out.print(String.format("Not ready to log framerate yet \n")); }
 	}
 }

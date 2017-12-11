@@ -172,12 +172,12 @@ public class HandTrackerJNI implements java.io.Serializable
 
 	public static void main(String args[]) throws Exception
 	{
-                System.out.println("HandTrackerApp Java standalone started with "+args.length+" arguments , which are not used anyways..\n");
+                System.out.println("Standalone HandTrackerApp for Java\n");
 		HandTrackerJNI tracker = new HandTrackerJNI();
 
 		boolean tracking = false;
 		boolean stop = false;
-		double[] x = HandTrackerJNI.getDefaultInitPos();             
+		double[] x = HandTrackerJNI.getDefaultInitPos();            
   
 		double trackingLoopTime = 0.0;
 		int trackingLoopIterations = 0;
@@ -250,7 +250,7 @@ public class HandTrackerJNI implements java.io.Serializable
 			}
 		}
 
-		System.out.println(String.format("FPS : %f", trackingLoopIterations / trackingLoopTime));
+		System.out.println(String.format("FPS : %f \n", trackingLoopIterations / trackingLoopTime));
                 //System.out.println(String.format("Iterations %03d", trackingLoopIterations));
 	}
 
