@@ -120,9 +120,9 @@ class HandTrackerApp
 				iterations++;				
 			}
 
+	         if (iterations>0) { System.out.print(String.format("FPS : %f \n", time / iterations)); } else
+                                   { System.out.print(String.format("Not ready to log framerate yet \n")); }
 		}
 		
-	     if (iterations>0) { System.out.print(String.format("FPS : %f \n", time / iterations)); } else
-                                { System.out.print(String.format("Not ready to log framerate yet \n")); }
 	}
 }
