@@ -34,6 +34,7 @@ mvn clean
 mvn install
 cd target 
 ln -s $RAPID_DIR/HandTrackerRAPID/Resources/media
+ln -s $RAPID_DIR/HandTrackerRAPID/Resources/libs/frames
 cd ..
 notify-send "Build Acceleration Server"
 
