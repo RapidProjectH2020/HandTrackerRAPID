@@ -250,7 +250,7 @@ public class HandTrackerJNI implements java.io.Serializable
 			}
 
                   
-   		   if (trackingLoopIterations>0) { System.out.println(String.format("FPS : %f \n", trackingLoopIterations / trackingLoopTime)); } else
+   		   if (trackingLoopIterations>0) { System.out.println(String.format("FPS %d %f \n",  trackingLoopIterations ,  trackingLoopIterations / trackingLoopTime)); } else
                                                  { System.out.print(String.format("Not ready to log framerate yet \n")); }
 		}
 
