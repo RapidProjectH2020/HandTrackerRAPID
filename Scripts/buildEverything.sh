@@ -62,6 +62,7 @@ mvn clean
 mvn package
 cd target
 ln -s $RAPID_DIR/HandTrackerRAPID/Resources/media
+ln -s $RAPID_DIR/HandTrackerRAPID/Resources/libs/frames
 notify-send "Build Hand Tracker Application"
 
 echo "DONE WITH EVERYTHING"
