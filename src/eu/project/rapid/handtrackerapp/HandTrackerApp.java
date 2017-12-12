@@ -14,7 +14,9 @@ class HandTrackerApp
                 int framesReceived=0; 
 		boolean enableSinglestep = false;
                 boolean enableAutostart=false;
+                boolean enableAutostop=false;
                 int autostart=0;
+                int autostop=0;
 
                 for (int i=0; i<args.length; i++)
                   {
@@ -26,6 +28,11 @@ class HandTrackerApp
                      {
                        autostart = Integer.parseInt(args[i+1]);
                        enableAutostart = true;
+                     }
+                     if ( (args[i].equals("-autostop")) && (i+1<args.length) ) 
+                     {
+                       autostop = Integer.parseInt(args[i+1]);
+                       enableAutostop = true;
                      }
                      
                      if ( args[i].equals("-singlestep") ) 
@@ -118,6 +125,14 @@ class HandTrackerApp
                              time=0;
                            }  
                          }
+
+                       if (enableAutostop)
+                        { 
+                          if (autostop==framesReceived)
+                           {
+                             key='q'; 
+                           }  
+                        } 
 
 			if (key == 's')
 			{
