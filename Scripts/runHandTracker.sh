@@ -18,10 +18,6 @@ echo "HandTracker Lib is : $HANDTRACKERLIBS_DIR"
 echo "Arguments are : $@"
 
 cd $DIR/../target
-
-ln -s ../Resources/libs/frames
-ln -s ../Resources/media
-
 LD_LIBRARY_PATH=$HANDTRACKERLIBS_DIR java -Djava.library.path="$HANDTRACKERLIBS_DIR"  -jar HandTrackerApp-0.0.4-SNAPSHOT.jar $@  &> ~/Documents/Programming/FORTH/rapid/lastHandTrackerRun.txt 
 
 

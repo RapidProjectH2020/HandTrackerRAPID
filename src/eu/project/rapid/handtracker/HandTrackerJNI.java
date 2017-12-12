@@ -181,6 +181,7 @@ public class HandTrackerJNI implements java.io.Serializable
   
 		double trackingLoopTime = 0.0;
 		int trackingLoopIterations = 0;
+ 
 
 		while (!stop)
 		{
@@ -196,30 +197,32 @@ public class HandTrackerJNI implements java.io.Serializable
 				step2i.padding = 0.1f;
 				step2i.view = step1o.view;
 				step2i.projection = step1o.projection;
-				Step2Output step2o = tracker.native_step2_computeBoundingBox(step2i);
+                                 
+				    Step2Output step2o = tracker.native_step2_computeBoundingBox(step2i);
 
-				Step3Input step3i = new Step3Input();
-				step3i.bb = step2o.bb;
-				step3i.projection = step1o.projection;
-				step3i.width = step1o.rgb.width;
-				step3i.height = step1o.rgb.height;
-				Step3Output step3o = tracker.native_step3_zoomVirtualCamera(step3i);
+				    Step3Input step3i = new Step3Input();
+				    step3i.bb = step2o.bb;
+				    step3i.projection = step1o.projection;
+				    step3i.width = step1o.rgb.width;
+				    step3i.height = step1o.rgb.height;
+				    Step3Output step3o = tracker.native_step3_zoomVirtualCamera(step3i);
 
-				Step4Input step4i = new Step4Input();
-				step4i.bb = step2o.bb;
-				step4i.depth = step1o.depth;
-				step4i.rgb = step1o.rgb;
-				Step4Output step4o = tracker.native_step4_preprocessInput(step4i);
+				    Step4Input step4i = new Step4Input();
+				    step4i.bb = step2o.bb;
+				    step4i.depth = step1o.depth;
+				    step4i.rgb = step1o.rgb;
+				    Step4Output step4o = tracker.native_step4_preprocessInput(step4i);
 
-				Step5Input step5i = new Step5Input();
-				step5i.depths = step4o.depths;
-				step5i.labels = step4o.labels;
-				step5i.projection = step3o.zoomProjectionMatrix;
-				step5i.view = step1o.view;
-				step5i.x = x;
-				Step5Output step5o = tracker.native_step5_track(step5i);
+				    Step5Input step5i = new Step5Input();
+				    step5i.depths = step4o.depths;
+				    step5i.labels = step4o.labels;
+				    step5i.projection = step3o.zoomProjectionMatrix;
+				    step5i.view = step1o.view;
+				    step5i.x = x;
+				    Step5Output step5o = tracker.native_step5_track(step5i);
 
-				x = step5o.x;
+				    x = step5o.x;
+                                  
 			}
 
 			Step6Input step6i = new Step6Input();
@@ -249,12 +252,8 @@ public class HandTrackerJNI implements java.io.Serializable
 				trackingLoopIterations++;				
 			}
 
-                  
-   		   if (trackingLoopIterations>0) { System.out.println(String.format("FPS %d %f \n",  trackingLoopIterations ,  trackingLoopIterations / trackingLoopTime)); } else
-                                                 { System.out.print(String.format("Not ready to log framerate yet \n")); }
-		}
-
-                //System.out.println(String.format("Iterations %03d", trackingLoopIterations));
+		 System.out.println(String.format("FPS %d %f \n", trackingLoopIterations , trackingLoopIterations  / trackingLoopTime));
+		} 
 	}
 
 	public static native void initLog(String[] args);

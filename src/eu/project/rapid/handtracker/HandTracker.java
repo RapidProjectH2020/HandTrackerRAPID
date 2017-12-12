@@ -227,6 +227,65 @@ public class HandTracker extends Remoteable
 		}
 	}
 
+	public HandTrackerJNI.Step5Output step2to5_AllInOneRAPID(double[] x , HandTrackerJNI.Step1Output step1o , HandTrackerJNI.Step2Input input)
+	{ 
+		Class<?>[] parameterTypes = { input.getClass() };
+		Object[] paramValues = { input };
+		Method method;
+		try
+		{
+			method = this.getClass().getMethod("step2to5_AllInOne", parameterTypes);
+			Object result = dfe.execute(method, paramValues, this);
+			if (result instanceof Exception) throw (Exception) result;
+			else return (HandTrackerJNI.Step5Output) result;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} 
+	}
+	
+	public HandTrackerJNI.Step5Output step2to5_AllInOne(double[] x , HandTrackerJNI.Step1Output step1o , HandTrackerJNI.Step2Input input)
+	{
+		try
+		{ 
+                    HandTrackerJNI.Step2Output step2o = tracker.native_step2_computeBoundingBox(input);
+		    
+                    HandTrackerJNI.Step3Input step3i = new HandTrackerJNI.Step3Input();
+	            step3i.bb = step2o.bb;
+	            step3i.projection = step1o.projection;
+	            step3i.width = step1o.rgb.width;
+                    step3i.height = step1o.rgb.height;
+	            HandTrackerJNI.Step3Output step3o = tracker.native_step3_zoomVirtualCamera(step3i);
+
+                    HandTrackerJNI.Step4Input step4i = new HandTrackerJNI.Step4Input();
+	            step4i.bb = step2o.bb;
+	            step4i.depth = step1o.depth;
+	            step4i.rgb = step1o.rgb;
+	            HandTrackerJNI.Step4Output step4o = tracker.native_step4_preprocessInput(step4i);
+
+	            HandTrackerJNI.Step5Input step5i = new HandTrackerJNI.Step5Input();
+	            step5i.depths = step4o.depths;
+	            step5i.labels = step4o.labels;
+	            step5i.projection = step3o.zoomProjectionMatrix;
+	            step5i.view = step1o.view;
+	            step5i.x = x;
+	            HandTrackerJNI.Step5Output step5o = tracker.native_step5_track(step5i);	
+
+                    return step5o;
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+
+
 	public double[] getDefaultInitPosRAPID()
 	{
 		Class<?>[] parameterTypes = {};
@@ -248,8 +307,11 @@ public class HandTracker extends Remoteable
 
 	public double[] getDefaultInitPos()
 	{
-		log.info("Trying to execute getDefaultInitPos which doesnt work for some reason");
-		return HandTrackerJNI.getDefaultInitPos(); 
+                 double[] x =  { 0.0, 100 ,900 ,0 ,0 ,1,0 , 1.20946707135219810e-001 ,1.57187812868051640e+000 ,9.58033504364020840e-003 , -1.78593063562731860e-001 , 7.89636216585289100e-002 ,2.67967456875403400e+000 , 1.88385552327860720e-001 , 2.20049375319072360e-002 ,-4.09740579183203310e-002 , 1.52145111735213370e+000 , 1.48366400350912500e-001 , 2.85607073734409630e-002 ,-4.53781680931323280e-003 , 1.52743247624671910e+000 ,1.01751907812505270e-001 , 1.08706683246161150e-001 ,8.10845240231484330e-003 , 1.49009228214971090e+000 ,4.64716068193632560e-002 ,-1.44370358851376110e-001 };              
+                 return x;  
+
+//		log.info("Trying to execute getDefaultInitPos which doesnt work for some reason");
+//		return HandTrackerJNI.getDefaultInitPos(); 
 	}
 
 	public void initLogRAPID(String[] args)

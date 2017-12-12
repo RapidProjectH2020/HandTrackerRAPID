@@ -12,6 +12,7 @@ class HandTrackerApp
                 String ip="127.0.0.1"; 
                 
                 int framesReceived=0; 
+		boolean enableSinglestep = false;
                 boolean enableAutostart=false;
                 int autostart=0;
 
@@ -25,6 +26,11 @@ class HandTrackerApp
                      {
                        autostart = Integer.parseInt(args[i+1]);
                        enableAutostart = true;
+                     }
+                     
+                     if ( args[i].equals("-singlestep") ) 
+                     {
+                       enableSinglestep = true;
                      }
                   }
                 
@@ -56,30 +62,39 @@ class HandTrackerApp
 				step2i.padding = 0.1f;
 				step2i.view = step1o.view;
 				step2i.projection = step1o.projection;
-				HandTrackerJNI.Step2Output step2o = tracker.step2_computeBoundingBoxRAPID(step2i);
 
-				HandTrackerJNI.Step3Input step3i = new HandTrackerJNI.Step3Input();
-				step3i.bb = step2o.bb;
-				step3i.projection = step1o.projection;
-				step3i.width = step1o.rgb.width;
-				step3i.height = step1o.rgb.height;
-				HandTrackerJNI.Step3Output step3o = tracker.step3_zoomVirtualCameraRAPID(step3i);
+                                if (enableSinglestep)
+                                   {  
+                                    System.out.print(String.format("Singlestep\n"));
+	                            HandTrackerJNI.Step5Output step5o = tracker.step2to5_AllInOneRAPID(x,step1o,step2i);
+				    x = step5o.x;		
+                                   } else
+                                   {
+				    HandTrackerJNI.Step2Output step2o = tracker.step2_computeBoundingBoxRAPID(step2i);
 
-				HandTrackerJNI.Step4Input step4i = new HandTrackerJNI.Step4Input();
-				step4i.bb = step2o.bb;
-				step4i.depth = step1o.depth;
-				step4i.rgb = step1o.rgb;
-				HandTrackerJNI.Step4Output step4o = tracker.step4_preprocessInputRAPID(step4i);
+				    HandTrackerJNI.Step3Input step3i = new HandTrackerJNI.Step3Input();
+				    step3i.bb = step2o.bb;
+				    step3i.projection = step1o.projection;
+				    step3i.width = step1o.rgb.width;
+				    step3i.height = step1o.rgb.height;
+				    HandTrackerJNI.Step3Output step3o = tracker.step3_zoomVirtualCameraRAPID(step3i);
 
-				HandTrackerJNI.Step5Input step5i = new HandTrackerJNI.Step5Input();
-				step5i.depths = step4o.depths;
-				step5i.labels = step4o.labels;
-				step5i.projection = step3o.zoomProjectionMatrix;
-				step5i.view = step1o.view;
-				step5i.x = x;
-				HandTrackerJNI.Step5Output step5o = tracker.step5_trackRAPID(step5i);
+				    HandTrackerJNI.Step4Input step4i = new HandTrackerJNI.Step4Input();
+				    step4i.bb = step2o.bb;
+				    step4i.depth = step1o.depth;
+				    step4i.rgb = step1o.rgb;
+				    HandTrackerJNI.Step4Output step4o = tracker.step4_preprocessInputRAPID(step4i);
 
-				x = step5o.x;				
+				    HandTrackerJNI.Step5Input step5i = new HandTrackerJNI.Step5Input();
+				    step5i.depths = step4o.depths;
+				    step5i.labels = step4o.labels;
+				    step5i.projection = step3o.zoomProjectionMatrix;
+				    step5i.view = step1o.view;
+				    step5i.x = x;
+				    HandTrackerJNI.Step5Output step5o = tracker.step5_trackRAPID(step5i);
+
+				    x = step5o.x;		
+                                  }   		
 			}
 
 			HandTrackerJNI.Step6Input step6i = new HandTrackerJNI.Step6Input();
@@ -99,8 +114,8 @@ class HandTrackerApp
                            {
                              key='s';
                              enableAutostart=false;
-                             time=0;
                              iterations=0;
+                             time=0;
                            }  
                          }
 
@@ -118,12 +133,12 @@ class HandTrackerApp
 			if (tracking)
 			{
 				double now = HandTrackerJNI.getTime();
-				time = now - start; 
+				time += now - start; 
 				iterations++;				
 			}
 
-	         if (time>0) { System.out.print(String.format("FPS %d %f \n", iterations , iterations / time)); } else
-                             { System.out.print(String.format("Not ready to log framerate yet \n")); }
+	         if (time>0)       { System.out.print(String.format("FPS %d %f \n", iterations, iterations / time )); } else
+                                   { System.out.print(String.format("Not ready to log framerate yet \n")); }
 		}
 		
 	}
