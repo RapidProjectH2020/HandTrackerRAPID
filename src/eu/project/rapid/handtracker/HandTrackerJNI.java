@@ -175,7 +175,12 @@ public class HandTrackerJNI implements java.io.Serializable
 	{
 		HandTrackerJNI tracker = new HandTrackerJNI();
 
-		boolean enableSinglestep = true;
+                int framesReceived=0; 
+		boolean enableSinglestep=false;
+                boolean enableAutostart=false;
+                boolean enableAutostop=false;
+                int autostart=0;
+                int autostop=0;
 
 		boolean tracking = false;
 		boolean stop = false;
@@ -185,10 +190,31 @@ public class HandTrackerJNI implements java.io.Serializable
 		double trackingLoopTime = 0.0;
 		int trackingLoopIterations = 0;
 
+
+                for (int i=0; i<args.length; i++)
+                  { 
+                     if ( (args[i].equals("-autostart")) && (i+1<args.length) ) 
+                     {
+                       autostart = Integer.parseInt(args[i+1]);
+                       enableAutostart = true;
+                     }
+                     if ( (args[i].equals("-autostop")) && (i+1<args.length) ) 
+                     {
+                       autostop = Integer.parseInt(args[i+1]);
+                       enableAutostop = true;
+                     }
+                     
+                     if ( args[i].equals("-singlestep") ) 
+                     {
+                       enableSinglestep = true;
+                     }
+                  }
+
 		while (!stop)
 		{
 			double startTime = getTime();
 			Step1Output step1o = tracker.native_step1_grab();
+                        ++framesReceived;
 
 			if (tracking)
 			{
@@ -202,6 +228,7 @@ public class HandTrackerJNI implements java.io.Serializable
 
                                 if (enableSinglestep)
                                  {  
+                                  System.out.print(String.format("Singlestep\n"));
  				  Step5Output step5o = tracker.native_step2to5_AllInOne(step2i,step1o);
 				  x = step5o.x; 
                                  } 
@@ -243,6 +270,28 @@ public class HandTrackerJNI implements java.io.Serializable
 
 			showImage("Viz", step6o.viz);
 			int key = waitKey(1);
+
+
+                       if (enableAutostart)
+                         {
+                          if (autostart==framesReceived)
+                           {
+                             key='s';
+                             enableAutostart=false;
+                             trackingLoopIterations=0;
+                             trackingLoopTime=0;
+                           }  
+                         }
+
+                       if (enableAutostop)
+                        { 
+                          if (autostop==framesReceived)
+                           {
+                             key='q'; 
+                             System.exit(0);
+                           }  
+                        } 
+
 
 			if (key == 's')
 			{
