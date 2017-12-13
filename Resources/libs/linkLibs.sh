@@ -1,4 +1,7 @@
 #!/bin/bash
+
+ln -s ../media
+
 MBV_SDK="/home/kyriazis/install/lib/"
 ln -s $MBV_SDK/libAcquisition.so 
 ln -s $MBV_SDK/libCore.so 
@@ -23,6 +26,7 @@ ln -s $RGBDACQUISITION/openni2_acquisition_shared_library/libOpenNI2Acquisition.
 ln -s $RGBDACQUISITION/openni1_acquisition_shared_library/libOpenNI1Acquisition.so
 ln -s $RGBDACQUISITION/template_acquisition_shared_library/libTemplateAcquisition.so
 ln -s $RGBDACQUISITION/opengl_acquisition_shared_library/libOpenGLAcquisition.so
+ln -s $RGBDACQUISITION/editor/Editor
 ln -s $RGBDACQUISITION/editor/Editor
 ln -s $RGBDACQUISITION/viewer/Viewer
 
