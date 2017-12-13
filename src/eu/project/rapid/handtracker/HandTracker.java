@@ -227,7 +227,7 @@ public class HandTracker extends Remoteable
 		}
 	}
 
-	public HandTrackerJNI.Step5Output step2to5_AllInOneRAPID(double[] x , HandTrackerJNI.Step1Output step1o , HandTrackerJNI.Step2Input input)
+	public HandTrackerJNI.Step5Output step2to5_AllInOneRAPID(HandTrackerJNI.Step2Input input,HandTrackerJNI.Step1Output step1o)
 	{ 
 		Class<?>[] parameterTypes = { input.getClass() };
 		Object[] paramValues = { input };
@@ -247,34 +247,11 @@ public class HandTracker extends Remoteable
 		} 
 	}
 	
-	public HandTrackerJNI.Step5Output step2to5_AllInOne(double[] x , HandTrackerJNI.Step1Output step1o , HandTrackerJNI.Step2Input input)
-	{
+	public HandTrackerJNI.Step5Output step2to5_AllInOne(HandTrackerJNI.Step2Input input,HandTrackerJNI.Step1Output step1o)
+	{ 
 		try
-		{ 
-                    HandTrackerJNI.Step2Output step2o = tracker.native_step2_computeBoundingBox(input);
-		    
-                    HandTrackerJNI.Step3Input step3i = new HandTrackerJNI.Step3Input();
-	            step3i.bb = step2o.bb;
-	            step3i.projection = step1o.projection;
-	            step3i.width = step1o.rgb.width;
-                    step3i.height = step1o.rgb.height;
-	            HandTrackerJNI.Step3Output step3o = tracker.native_step3_zoomVirtualCamera(step3i);
-
-                    HandTrackerJNI.Step4Input step4i = new HandTrackerJNI.Step4Input();
-	            step4i.bb = step2o.bb;
-	            step4i.depth = step1o.depth;
-	            step4i.rgb = step1o.rgb;
-	            HandTrackerJNI.Step4Output step4o = tracker.native_step4_preprocessInput(step4i);
-
-	            HandTrackerJNI.Step5Input step5i = new HandTrackerJNI.Step5Input();
-	            step5i.depths = step4o.depths;
-	            step5i.labels = step4o.labels;
-	            step5i.projection = step3o.zoomProjectionMatrix;
-	            step5i.view = step1o.view;
-	            step5i.x = x;
-	            HandTrackerJNI.Step5Output step5o = tracker.native_step5_track(step5i);	
-
-                    return step5o;
+		{
+			return tracker.native_step2to5_AllInOne(input,step1o);
 		}
 		catch (Exception e)
 		{
@@ -282,6 +259,7 @@ public class HandTracker extends Remoteable
 			e.printStackTrace();
 			return null;
 		}
+ 
 	}
 
 

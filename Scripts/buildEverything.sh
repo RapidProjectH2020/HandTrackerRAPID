@@ -3,6 +3,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 
+MBV_DIR="/home/kyriazis/projects"
+
 cd ..
 cd ..
 RAPID_DIR=`pwd`
@@ -27,6 +29,7 @@ mvn clean
 mvn install
 cd target 
 ln -s $RAPID_DIR/HandTrackerRAPID/Resources/media
+ln -s $RAPID_DIR/HandTrackerRAPID/Resources/libs/frames
 cd ..
 
 cd $RAPID_DIR/rapid-linux/AccelerationServer
@@ -34,7 +37,6 @@ mvn clean
 mvn install
 cd target 
 ln -s $RAPID_DIR/HandTrackerRAPID/Resources/media
-ln -s $RAPID_DIR/HandTrackerRAPID/Resources/libs/frames
 cd ..
 notify-send "Build Acceleration Server"
 
@@ -43,18 +45,18 @@ cd $RAPID_DIR/rapid-linux-DemoApp
 mvn clean
 mvn package
 
-#cd /home/kyriazis/projects/mbv/build
+cd $MBV_DIR/mbv/build
 #make
-#make install
+make install
 
-#cd /home/kyriazis/projects/HandTrackerRGBD/build
+cd $MBV_DIR/HandTrackerRGBD/build
 #make
-#make install
+make install
 
-#cd /home/kyriazis/projects/HandTrackerJNI/build
+cd $MBV_DIR/HandTrackerJNI/build
 #make
-#make install
-#notify-send "Build Hand Tracker JNI Wrapper"
+make install
+notify-send "Build Hand Tracker JNI Wrapper"
 
 #cd /home/kyriazis/projects/HandTrackerRAPID
 cd $RAPID_DIR/HandTrackerRAPID

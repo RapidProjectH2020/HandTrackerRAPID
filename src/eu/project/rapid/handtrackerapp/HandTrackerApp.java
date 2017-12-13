@@ -52,17 +52,21 @@ class HandTrackerApp
 		
 		int iterations = 0;
 		double time = 0.0;
+                 
+                double timeSummed =0.0;
 
 		while (!stop)
 		{
-			double start = HandTrackerJNI.getTime();
 			
-			HandTrackerJNI.Step1Output step1o = tracker.step1_grab();
+			double start = HandTrackerJNI.getTime(); 
+                        HandTrackerJNI.Step1Output step1o = tracker.step1_grab();
                         ++framesReceived;
 
 			if (tracking)
 			{
-				HandTrackerJNI.Step2Input step2i = new HandTrackerJNI.Step2Input();
+			        start = HandTrackerJNI.getTime(); //If we are tracking we only care about optimization loop
+                                 
+                        	HandTrackerJNI.Step2Input step2i = new HandTrackerJNI.Step2Input();
 				step2i.x = x;
 				step2i.width = step1o.rgb.width;
 				step2i.height = step1o.rgb.height;
@@ -73,7 +77,7 @@ class HandTrackerApp
                                 if (enableSinglestep)
                                    {  
                                     System.out.print(String.format("Singlestep\n"));
-	                            HandTrackerJNI.Step5Output step5o = tracker.step2to5_AllInOneRAPID(x,step1o,step2i);
+	                            HandTrackerJNI.Step5Output step5o = tracker.step2to5_AllInOneRAPID(step2i,step1o);
 				    x = step5o.x;		
                                    } else
                                    {
@@ -122,7 +126,7 @@ class HandTrackerApp
                              key='s';
                              enableAutostart=false;
                              iterations=0;
-                             time=0;
+                             timeSummed=0;
                            }  
                          }
 
@@ -131,6 +135,7 @@ class HandTrackerApp
                           if (autostop==framesReceived)
                            {
                              key='q'; 
+                             System.exit(0);
                            }  
                         } 
 
@@ -148,11 +153,12 @@ class HandTrackerApp
 			if (tracking)
 			{
 				double now = HandTrackerJNI.getTime();
-				time += now - start; 
-				iterations++;				
+                                 time = now - start;  
+				 timeSummed += time; 
+				 iterations++; 	
 			}
 
-	         if (time>0)       { System.out.print(String.format("FPS %d %f \n", iterations, iterations / time )); } else
+	         if (time>0)       { System.out.print(String.format("FPS %d %f %f \n", iterations, 1 / time , iterations / timeSummed )); } else
                                    { System.out.print(String.format("Not ready to log framerate yet \n")); }
 		}
 		
