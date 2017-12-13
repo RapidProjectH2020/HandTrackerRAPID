@@ -229,8 +229,8 @@ public class HandTracker extends Remoteable
 
 	public HandTrackerJNI.Step5Output step2to5_AllInOneRAPID(HandTrackerJNI.Step2Input input,HandTrackerJNI.Step1Output step1o)
 	{ 
-		Class<?>[] parameterTypes = { input.getClass() };
-		Object[] paramValues = { input };
+		Class<?>[] parameterTypes = { input.getClass() , step1o.getClass() };
+		Object[] paramValues = { input , step1o };
 		Method method;
 		try
 		{
