@@ -1,6 +1,8 @@
 package eu.project.rapid.handtrackerapp;
 
 import eu.project.rapid.ac.DFE;
+import eu.project.rapid.common.RapidConstants;
+import eu.project.rapid.common.RapidConstants.COMM_TYPE;
 import eu.project.rapid.handtracker.HandTracker;
 import eu.project.rapid.handtracker.HandTrackerJNI;
 
@@ -12,6 +14,7 @@ class HandTrackerApp
                 String ip="127.0.0.1"; 
                 
                 int framesReceived=0; 
+		boolean enableRemoteForce = false;
 		boolean enableSinglestep = false;
                 boolean enableAutostart=false;
                 boolean enableAutostop=false;
@@ -29,6 +32,12 @@ class HandTrackerApp
                        autostart = Integer.parseInt(args[i+1]);
                        enableAutostart = true;
                      }
+
+                     if (args[i].equals("-forceremote")) 
+                     { 
+                       enableRemoteForce = true;
+                     }
+                     
                      if ( (args[i].equals("-autostop")) && (i+1<args.length) ) 
                      {
                        autostop = Integer.parseInt(args[i+1]);
@@ -44,6 +53,11 @@ class HandTrackerApp
                  System.out.println("HandTrackerApp will try to connect to IP : "+ip+"\n");
 
 		DFE dfe = DFE.getInstance(ip);
+                
+                //Also Local
+                if (enableRemoteForce) { dfe.setUserChoice(RapidConstants.ExecLocation.REMOTE); } else
+                                       { dfe.setUserChoice(RapidConstants.ExecLocation.DYNAMIC); }
+
 		HandTracker tracker = new HandTracker(dfe);
 
 		boolean tracking = false;
